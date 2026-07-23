@@ -541,6 +541,7 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
       <h2 id="teacher-title">答えではなく、理由を話す時間に</h2>
       <ul class="plain-list">
         <li>個人操作は1話3〜5分。回答は採点されません。</li>
+        <li>ログインやアカウント登録は不要です。端末とブラウザがあれば、すぐに始められます。</li>
         <li>操作後、ペアや学級で「なぜ選んだか」を共有してください。</li>
         <li>選択人数を挙手で可視化しても構いません。</li>
         <li>個人の回答提出や追跡を前提にしていません。</li>
@@ -901,13 +902,12 @@ window.AI_COMPASS_EPISODES = [
       <div class="cinematic-art" aria-hidden="true"></div><div class="cinematic-shade" aria-hidden="true"></div>
       <header class="cinematic-bar"><div class="cinematic-brand">${icon("compass")}<span><b>AI</b> COMPASS</span></div><nav><button type="button" data-dialog="settings" aria-label="設定">${icon("gear")}</button><button type="button" data-dialog="teacher" aria-label="先生向けメニュー">${icon("book")}</button></nav></header>
       <main class="cinematic-stage">
-        <section class="cinematic-copy"><span class="cinematic-rule"></span><h1>状況を読み、<br>選び、<br>その先を考える。</h1><p>AIとの関わり方を探る、<br>選択型タクティカルストーリー。</p></section>
+        <section class="cinematic-copy"><span class="cinematic-rule"></span><h1>見極め、<br>選び、<br>その先を考える。</h1><p>AIとの関わり方を探る。</p></section>
         <aside class="cinematic-message" aria-label="物語のきっかけ"><span>●　メッセージ <time>今</time></span><strong>リオ</strong><p>放課後、空いてる？</p></aside>
         <section class="cinematic-dialogue"><small>ユウト</small><p>……どう返信するのが、いいんだろう。</p>${icon("compass")}</section>
         <button type="button" class="cinematic-start" data-action="change-character">${icon("compass")}<span>物語に入る</span>${icon("arrow")}</button>
         <nav class="cinematic-chapters" aria-label="収録チャプター">${chapters.map((chapter, index) => `<span class="${index === 0 ? "active" : ""}"><b>${chapter.number}</b>${esc(chapter.title)}</span>`).join("")}</nav>
       </main>
-      <footer class="cinematic-meta"><span>約4分</span><span>ログイン不要</span></footer>
     </section>`;
   }
   function renderCharacters() {
