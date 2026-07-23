@@ -907,7 +907,7 @@ window.AI_COMPASS_EPISODES = [
         <button type="button" class="cinematic-start" data-action="change-character">${icon("compass")}<span>物語に入る</span>${icon("arrow")}</button>
         <nav class="cinematic-chapters" aria-label="収録チャプター">${chapters.map((chapter, index) => `<span class="${index === 0 ? "active" : ""}"><b>${chapter.number}</b>${esc(chapter.title)}</span>`).join("")}</nav>
       </main>
-      <footer class="cinematic-meta"><span>約4分</span><span>ログイン不要</span><span>正解なし</span></footer>
+      <footer class="cinematic-meta"><span>約4分</span><span>ログイン不要</span></footer>
     </section>`;
   }
   function renderCharacters() {
