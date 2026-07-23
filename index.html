@@ -74,13 +74,15 @@ h2 { line-height:1.3; }
 
 dialog { width:min(560px,calc(100% - 28px));padding:0;color:var(--text);border:1px solid var(--line);border-radius:var(--r-l);background:var(--panel-solid);box-shadow:0 36px 100px rgba(0,0,0,.65); }
 dialog::backdrop { background:rgba(0,7,13,.78); }
-.dialog-inner { position:relative;padding:clamp(27px,5vw,43px); }
+.dialog-inner { position:relative;padding:clamp(22px,3.6vw,32px); }
+.dialog-inner h2 { margin:0 0 10px; }
+.dialog-inner>p { margin:0 0 12px;line-height:1.55; }
 .dialog-close { position:absolute;right:12px;top:10px;display:grid;place-items:center;width:44px;height:44px;color:var(--text);border:0;background:none;font-size:17px;cursor:pointer; }
 .plain-list { padding-left:19px;color:var(--muted);line-height:1.8; }
-.dialog-actions { display:grid;gap:10px;margin-top:20px; }
-.microcopy { color:var(--muted);font-size:14px; }
-.dialog-support-note { margin-top:16px;padding:12px 14px;color:#dce9e8;border:1px solid rgba(111,176,161,.3);border-radius:var(--r-s);background:rgba(111,176,161,.07);font-size:13px;line-height:1.6; }
-.dialog-reference-link { margin-top:10px; }
+.dialog-actions { display:grid;gap:8px;margin-top:14px; }
+.microcopy { margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.5; }
+.dialog-support-note { margin-top:10px;padding:10px 13px;color:#dce9e8;border:1px solid rgba(111,176,161,.3);border-radius:var(--r-s);background:rgba(111,176,161,.07);font-size:13px;line-height:1.5; }
+.dialog-reference-link { margin-top:8px; }
 .dialog-reference-link a { display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:13px;font-weight:900;text-decoration:none; }
 .dialog-reference-link a:hover { text-decoration:underline; }
 .dialog-reference-link .icon { flex:none;width:16px;height:16px; }
@@ -253,14 +255,14 @@ dialog::backdrop { background:rgba(0,7,13,.78); }
 .case-filters button[aria-pressed="true"] { color:var(--cyan); }
 .case-filters button[aria-pressed="true"]:after { content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--cyan);box-shadow:0 0 12px rgba(111,176,161,.5); }
 .chapter-list { display:grid;gap:22px; }
-.chapter-section>header { display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(145,185,188,.17); }
+.chapter-section>header { display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(145,185,188,.17); }
 .chapter-section>header>span { color:var(--gold);font-size:14px;font-weight:950;letter-spacing:.09em; }
 .chapter-section>header h3 { margin:0;font-size:21px; }
 .chapter-section>header p { margin:3px 0 0;color:#819da0;font-size:14px; }
 .chapter-section>header>b { color:#789396;font-size:14px;letter-spacing:.07em; }
 .case-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
-.case-card { min-height:140px; }
-.case-card button { position:relative;width:100%;height:100%;min-height:162px;overflow:hidden;padding:0;color:var(--text);border:1px solid var(--line);border-radius:var(--r-l);background:#0b2734;box-shadow:0 24px 65px rgba(0,6,12,.34);cursor:pointer;text-align:left;transition:transform .18s var(--ease),border-color .18s var(--ease); }
+.case-card { min-height:158px; }
+.case-card button { position:relative;width:100%;height:100%;min-height:184px;overflow:hidden;padding:0;color:var(--text);border:1px solid var(--line);border-radius:var(--r-l);background:#0b2734;box-shadow:0 24px 65px rgba(0,6,12,.34);cursor:pointer;text-align:left;transition:transform .18s var(--ease),border-color .18s var(--ease); }
 .case-card button:hover { transform:translateY(-4px);border-color:var(--cyan); }
 .case-card-image,.case-card-shade { position:absolute;inset:0; }
 .case-card-image { background:center/cover no-repeat;transition:transform .35s var(--ease); }
@@ -274,11 +276,11 @@ dialog::backdrop { background:rgba(0,7,13,.78); }
 .case-card-shade { background:linear-gradient(transparent 18%,rgba(3,15,24,.2) 42%,rgba(3,15,24,.98) 100%); }
 .case-card-index { position:absolute;top:17px;left:18px;padding:5px 8px;color:#08202a;border-radius:4px;background:var(--gold);font-size:14px;font-weight:950;letter-spacing:.09em; }
 .case-card-done { position:absolute;top:17px;right:17px;padding:5px 8px;color:var(--cyan);border:1px solid rgba(111,176,161,.42);border-radius:99px;background:rgba(4,26,35,.75);font-size:14px;font-weight:900; }
-.case-card-content { position:absolute;left:20px;right:20px;bottom:18px; }
+.case-card-content { position:absolute;left:20px;right:20px;bottom:16px; }
 .case-card-content>small { color:#9cb5b7;font-size:14px;font-weight:900;letter-spacing:.06em; }
-.case-card-content>strong { display:block;margin-top:6px;font-size:clamp(18px,1.8vw,24px);line-height:1.25; }
-.case-card-content>span { display:block;margin-top:7px;color:#9eb5b7;font-size:15px; }
-.case-card-content>em { display:inline-block;margin-top:10px;padding:4px 7px;color:#a4cfc3;border:1px solid rgba(111,176,161,.28);border-radius:99px;background:rgba(39,146,145,.12);font-size:14px;font-style:normal;font-weight:900; }
+.case-card-content>strong { display:block;margin-top:4px;font-size:clamp(18px,1.8vw,24px);line-height:1.22; }
+.case-card-content>span { display:block;margin-top:5px;color:#9eb5b7;font-size:15px; }
+.case-card-content>em { display:inline-block;margin-top:7px;padding:4px 7px;color:#a4cfc3;border:1px solid rgba(111,176,161,.28);border-radius:99px;background:rgba(39,146,145,.12);font-size:14px;font-style:normal;font-weight:900; }
 .case-card-content>b { float:right;margin-top:13px;color:var(--gold);font-size:14px;letter-spacing:.05em; }
 .case-empty { padding:35px;color:var(--muted);text-align:center;border:1px dashed var(--line);border-radius:var(--r-m); }
 .special-case { position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;min-height:190px;margin-top:48px;overflow:hidden;padding:32px clamp(22px,4vw,42px);border:1px solid rgba(214,176,103,.34);border-radius:var(--r-l);background:linear-gradient(120deg,rgba(15,22,38,.98),rgba(15,50,59,.92));box-shadow:0 30px 80px rgba(0,5,12,.42); }
@@ -451,7 +453,7 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
 .student-field b { display:inline-block;width:74px;height:1px;border-bottom:1px solid var(--line-strong); }
 .student-field-name b { width:190px; }
 .student-field strong { font-size:16px; }
-.settings-fields { display:flex;gap:14px;margin:18px 0 6px; }
+.settings-fields { display:flex;gap:14px;margin:12px 0 4px; }
 .settings-fields label { flex:1;display:grid;gap:6px;color:var(--muted);font-size:14px;font-weight:900; }
 .settings-fields input { min-height:44px;padding:9px 12px;color:var(--text);border:1px solid var(--line);border-radius:var(--r-s);background:rgba(255,255,255,.055); }
 .settings-fields input:focus-visible { border-color:var(--cyan); }
@@ -574,7 +576,6 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
         <button class="danger-button" type="button" data-action="clear-data">この端末の記録を消す</button>
       </div>
       <p class="microcopy">別の端末に移るときは、書き出したファイルを新しい端末で読み込むと続きから使えます。</p>
-      <p id="storage-note" class="microcopy"></p>
       <p class="dialog-support-note">一人で悩んでいるときは、24時間子供SOSダイヤル（0120-0-78310・無料）にも相談できます。</p>
       <p class="dialog-reference-link"><a href="./ai-compass-reference.pdf" target="_blank" rel="noopener"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.2A2.2 2.2 0 0 1 6.2 3H20v15.4H6.2A2.2 2.2 0 0 0 4 20.6z"/><path d="M4 5.2v15.4M8 7.4h8M8 10.6h8"/></svg></span>判断基準の根拠資料（保護者説明用・PDF）を開く</a></p>
     </div>
@@ -925,7 +926,7 @@ window.AI_COMPASS_EPISODES = [
       <header class="case-library-bar"><button type="button" class="case-library-logo" data-action="title" aria-label="トップへ戻る">${icon("compass")}AI COMPASS</button><nav aria-label="ケースライブラリの補助メニュー"><button type="button" data-action="summary">わたしの方針</button><button type="button" data-dialog="teacher">先生へ</button><button type="button" data-dialog="settings">設定</button></nav></header>
       <div class="case-library-layout">
         <aside class="case-library-intro"><p class="eyebrow">STORY LIBRARY</p><h1>開きたい物語から、<br>考え始める。</h1><p class="case-library-note">${icon("book","icon-inline")} 物語に出てくる「AI」は、学校が認めたサービスの範囲内での利用を想定しています。実際に使えるAIサービスや年齢制限は学校のきまりに従ってください。</p><button class="case-viewpoint" type="button" data-action="change-character"><span class="case-viewpoint-portrait">${avatar(c, "case-viewpoint-image")}</span><span class="case-viewpoint-info"><small style="--character-accent:${c.accent}">あなた・PLAYER ${String(characters.findIndex(x => x.id === c.id) + 1).padStart(2, "0")}</small><em>${icon("arrow","icon-inline")}選び直す</em></span></button><div class="library-progress"><span><b>${completedNormal}</b> / ${normalEpisodes.length} CASES</span><i aria-hidden="true"><b style="width:${normalEpisodes.length ? (completedNormal / normalEpisodes.length) * 100 : 0}%"></b></i><small>${completedNormal === normalEpisodes.length ? "通常ケースはすべて体験済み" : `あと ${normalEpisodes.length - completedNormal} ケース`}</small></div><dl class="case-library-status"><div><dt>通常ケース</dt><dd>${normalEpisodes.length}</dd></div><div><dt>体験済み</dt><dd>${completedNormal}</dd></div><div><dt>作った方針</dt><dd>${Object.keys(saved.rules).length}</dd></div></dl></aside>
-        <main class="case-library-main"><div class="case-library-heading"><div><p>CHAPTER SELECT</p><h2>物語を選ぶ</h2></div><span>${normalEpisodes.length} CASES + SPECIAL</span></div><div class="case-filters chapter-tabs" aria-label="チャプターで絞り込む"><button type="button" data-chapter="all" aria-pressed="${activeChapter === "all"}">すべて</button>${chapters.map(chapter => `<button type="button" data-chapter="${chapter.id}" aria-pressed="${activeChapter === chapter.id}">${chapter.number} ${esc(chapter.title)}</button>`).join("")}</div><div class="chapter-list">${visibleChapters.map(chapter => { const chapterEpisodes = normalEpisodes.filter(ep => ep.chapter === chapter.id); const doneCount = chapterEpisodes.filter(ep => saved.completed.includes(ep.id)).length; return `<section class="chapter-section" aria-labelledby="chapter-${chapter.id}"><header><span>CHAPTER ${chapter.number}</span><div><h3 id="chapter-${chapter.id}">${esc(chapter.title)}</h3><p>${esc(chapter.lead)}</p></div><b>${doneCount} / ${chapterEpisodes.length}</b></header><div class="case-grid">${chapterEpisodes.map(ep => caseCard(ep)).join("")}</div></section>`; }).join("")}</div><section class="special-case ${sessionSpecialUnlocked ? "is-unlocked" : "is-pending"}" aria-labelledby="special-title"><div class="special-case-aura" aria-hidden="true"></div><div class="special-case-copy"><span>SPECIAL CASE · RESEARCH LESSON</span><h3 id="special-title">${esc(specialEpisode.title)}</h3><p>${sessionSpecialUnlocked ? "これまでに作った自分のコンパスを持って、答えのない対話へ。" : "先生から伝えられた合言葉を入力すると開きます。"}</p>${!sessionSpecialUnlocked ? `<form class="special-password" data-action="unlock-special"><label class="sr-only" for="special-password-input">先生からの合言葉</label><input id="special-password-input" type="text" autocomplete="off" placeholder="先生からの合言葉">${specialPasswordError ? `<span class="special-password-error" role="alert">合言葉が違うようです</span>` : ""}<button type="submit">開く ${icon("arrow","icon-inline")}</button></form>` : `<button type="button" data-episode="${specialEpisode.id}">特別編を開く ${icon("arrow","icon-inline")}</button>`}<p class="special-case-support">${icon("book","icon-inline")} 一人で悩んでいるときは、<a href="tel:0120078310">24時間子供SOSダイヤル（0120-0-78310・無料）</a>にも相談できます。</p></div></section></main>
+        <main class="case-library-main"><div class="case-library-heading"><div><p>CHAPTER SELECT</p><h2>物語を選ぶ</h2></div><span>${normalEpisodes.length} CASES + SPECIAL</span></div><div class="case-filters chapter-tabs" aria-label="チャプターで絞り込む"><button type="button" data-chapter="all" aria-pressed="${activeChapter === "all"}">すべて</button>${chapters.map(chapter => `<button type="button" data-chapter="${chapter.id}" aria-pressed="${activeChapter === chapter.id}">${chapter.number} ${esc(chapter.title)}</button>`).join("")}</div><div class="chapter-list">${visibleChapters.map(chapter => { const chapterEpisodes = normalEpisodes.filter(ep => ep.chapter === chapter.id); const doneCount = chapterEpisodes.filter(ep => saved.completed.includes(ep.id)).length; return `<section class="chapter-section" aria-labelledby="chapter-${chapter.id}"><header><span>CHAPTER ${chapter.number}</span><h3 id="chapter-${chapter.id}">${esc(chapter.title)}</h3><b>${doneCount} / ${chapterEpisodes.length}</b></header><div class="case-grid">${chapterEpisodes.map(ep => caseCard(ep)).join("")}</div></section>`; }).join("")}</div><section class="special-case ${sessionSpecialUnlocked ? "is-unlocked" : "is-pending"}" aria-labelledby="special-title"><div class="special-case-aura" aria-hidden="true"></div><div class="special-case-copy"><span>SPECIAL CASE · RESEARCH LESSON</span><h3 id="special-title">${esc(specialEpisode.title)}</h3><p>${sessionSpecialUnlocked ? "これまでに作った自分のコンパスを持って、答えのない対話へ。" : "先生から伝えられた合言葉を入力すると開きます。"}</p>${!sessionSpecialUnlocked ? `<form class="special-password" data-action="unlock-special"><label class="sr-only" for="special-password-input">先生からの合言葉</label><input id="special-password-input" type="text" autocomplete="off" placeholder="先生からの合言葉">${specialPasswordError ? `<span class="special-password-error" role="alert">合言葉が違うようです</span>` : ""}<button type="submit">開く ${icon("arrow","icon-inline")}</button></form>` : `<button type="button" data-episode="${specialEpisode.id}">特別編を開く ${icon("arrow","icon-inline")}</button>`}<p class="special-case-support">${icon("book","icon-inline")} 一人で悩んでいるときは、<a href="tel:0120078310">24時間子供SOSダイヤル（0120-0-78310・無料）</a>にも相談できます。</p></div></section></main>
       </div>
     </section>`;
   }
@@ -1071,7 +1072,7 @@ window.AI_COMPASS_EPISODES = [
   document.addEventListener("input", handleRuleInput);
   window.addEventListener("hashchange", routeFromHash);
   document.querySelectorAll("dialog").forEach(d => d.addEventListener("click", e => { if (e.target === d) d.close(); }));
-  document.querySelector("#storage-note").textContent = storageAvailable ? "保存先：このブラウザのlocalStorage" : "この環境では保存できませんが、体験は続けられます。";
+  if (!storageAvailable) { const warn = document.createElement("p"); warn.className = "microcopy"; warn.textContent = "この環境では保存できませんが、体験は続けられます。"; document.querySelector("#settings-dialog .dialog-inner")?.insertBefore(warn, document.querySelector("#settings-dialog .dialog-actions")); }
   render();
 })();
 
