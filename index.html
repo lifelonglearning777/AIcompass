@@ -799,7 +799,7 @@ window.AI_COMPASS_EPISODES = [
   let activeChapter = "all";
   let specialPasswordError = false;
   let sessionSpecialUnlocked = false; // 特別編の解錠はこの端末に保存しない。ページを開き直すたび、先生の合言葉が再度必要。
-  let state = { view: saved.character ? "home" : "welcome", episode: null, step: 0, choice: null, reason: null, reconsider: null, finalChoice: null, ruleA: "", ruleB: "" };
+  let state = { view: "welcome", episode: null, step: 0, choice: null, reason: null, reconsider: null, finalChoice: null, ruleA: "", ruleB: "" };
 
   function goToCharacters() {
     document.querySelectorAll("dialog[open]").forEach(d => d.close());
