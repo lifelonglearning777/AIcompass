@@ -414,7 +414,7 @@ body[data-view="episode"][data-step="3"] .game-shade { background:radial-gradien
 
 /* 上部バー：主人公は「これはあなた」を示すだけの役割なので小さく置く。
    旧デザインでは人物パネルが620px（1366px画面の45%）を占め、場面の絵まで覆っていた。 */
-.story-bar { position:relative;z-index:4;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:20px;width:min(1240px,calc(100% - 40px));height:60px;margin:auto;border-bottom:1px solid var(--line); }
+.story-bar { position:relative;z-index:4;display:grid;grid-template-columns:110px minmax(0,1fr) 110px;align-items:center;gap:20px;width:min(1240px,calc(100% - 40px));height:60px;margin:auto;border-bottom:1px solid var(--line); }
 .story-back { display:inline-flex;align-items:center;gap:6px;color:var(--muted);border:0;background:none;cursor:pointer;font-size:14px;font-weight:800; }
 .story-back:hover { color:var(--cyan); }
 .story-phase { display:flex;align-items:center;gap:16px;justify-content:center;min-width:0; }
@@ -425,10 +425,7 @@ body[data-view="episode"][data-step="3"] .game-shade { background:radial-gradien
 .story-steps i.done { background:rgba(111,176,161,.6); }
 .story-steps i.now { width:30px;background:var(--gold);box-shadow:0 0 10px rgba(201,161,95,.5); }
 .story-steps b { margin-left:7px;color:#8ba4a6;font-size:12px;font-weight:900;font-variant-numeric:tabular-nums; }
-.story-who { display:flex;align-items:center;gap:8px;flex:none;padding:6px 13px 6px 12px;color:#eaf6f5;text-align:right;border:1px solid rgba(111,176,161,.4);border-radius:99px;background:rgba(56,169,188,.13);font-size:13.5px;font-weight:800;line-height:1.4; }
-.story-who>.icon { flex:none;width:15px;height:15px;color:var(--cyan); }
-.story-who span { text-align:left; }
-.story-avatar { width:36px;height:36px;flex:none;overflow:hidden;border:1px solid var(--line);border-radius:50%;object-fit:cover;object-position:top center; }
+.story-bar-spacer { width:110px; }
 
 .game-stage { position:relative;display:flex;justify-content:center;width:min(1320px,calc(100% - 44px));min-height:calc(100svh - 60px);margin:auto;padding:clamp(14px,2.4vh,28px) 0 26px; }
 .episode-content { position:relative;z-index:3;width:min(100%,840px);margin:0 auto; }
@@ -486,6 +483,83 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
 .choice-marker { flex:0 0 26px;display:grid;place-items:center;width:26px;height:26px;border:1px solid #78999a;border-radius:50%; }
 .selected .choice-marker { color:#061923;background:var(--cyan);border-color:var(--cyan); }
 .step-actions { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px; }
+
+/* ---- Six-beat flow for the 12 standard stories ----
+   The special research-lesson story keeps its longer reflective structure. */
+.compact-flow .game-stage { padding-top:14px; }
+.compact-flow .story-copy,.compact-flow .question-layout,.compact-flow .compact-policy,.compact-flow .ending { padding:30px; }
+.compact-flow .story-copy h1,.compact-flow .question-layout h1,.compact-flow .compact-policy h1,.compact-flow .ending h1 { margin:0 0 14px;font-size:clamp(27px,2vw,30px);font-weight:850;line-height:1.3;letter-spacing:-.018em; }
+.compact-flow .question-help,.compact-policy-lead { margin:0 0 20px;font-size:16px;line-height:1.65; }
+.compact-flow .story-text { margin:20px 0;color:#dce9e8;font-size:17px;line-height:1.8; }
+.scene-meta { display:flex;align-items:center;gap:14px;margin:0 0 18px;color:#c9dcdb;font-size:13px; }
+.scene-meta>span { display:inline-flex;align-items:center;gap:5px; }
+.scene-meta .icon { width:15px;height:15px;color:var(--cyan); }
+.scene-meta-avatar { width:32px;height:32px;object-fit:cover;object-position:top center;border:1px solid rgba(111,176,161,.45);border-radius:50%; }
+.compact-situation .scene-msg { margin:20px 0; }
+.compact-situation .scene-msg blockquote { font-size:16.5px;line-height:1.7; }
+.compact-facts { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 24px; }
+.compact-facts>div { display:flex;align-items:center;gap:12px;min-width:0;min-height:72px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-m);background:rgba(255,255,255,.045); }
+.compact-facts .icon { flex:none;width:20px;height:20px;color:#8fb4b4; }
+.compact-facts span { min-width:0; }
+.compact-facts small { display:block;color:#8ba4a6;font-size:12px;font-weight:750;line-height:1.3; }
+.compact-facts strong { display:block;margin-top:5px;overflow:hidden;color:#f2f8f7;font-size:16px;font-weight:850;line-height:1.35;text-overflow:ellipsis;white-space:nowrap; }
+.compact-choice-list { gap:11px;margin:20px 0 0; }
+.compact-choice-card { min-height:66px;padding:13px 48px 13px 19px; }
+.compact-choice-card>span:last-child { color:var(--text);font-size:17px;font-weight:750;line-height:1.55; }
+.compact-reconsider-list { grid-template-columns:1fr; }
+.compact-reconsider-list .compact-choice-card { min-height:68px; }
+.compact-reconsider-list .compact-choice-card>span:last-child { display:block; }
+.compact-reconsider-list strong { display:block;font-size:17px;line-height:1.4; }
+.compact-reconsider-list small { display:block;margin-top:3px;color:var(--muted);font-size:14px;font-weight:600;line-height:1.45; }
+.compact-back { margin-top:14px; }
+.impact-kicker,.ending-badge { margin:0 0 6px;color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.12em; }
+.compact-impact .outcome { margin-top:12px; }
+.tradeoff-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:14px 0 18px; }
+.tradeoff-grid article { display:flex;align-items:flex-start;gap:11px;padding:13px 14px;border:1px solid var(--line);border-radius:var(--r-m);background:rgba(255,255,255,.035); }
+.tradeoff-grid .icon { flex:none;display:grid;place-items:center;width:29px;height:29px;color:#061923;border-radius:50%;background:var(--cyan); }
+.tradeoff-watch .icon { background:var(--gold); }
+.tradeoff-grid small { display:block;color:var(--dim);font-size:11px;font-weight:900;letter-spacing:.06em; }
+.tradeoff-grid strong { display:block;margin-top:4px;color:var(--text);font-size:14px;line-height:1.5; }
+.compact-policy { width:min(1080px,100%);max-width:none;margin:auto;background:rgba(4,19,29,.93)!important; }
+.compact-policy-layout { display:grid;grid-template-columns:minmax(0,1.08fr) minmax(380px,.92fr);gap:30px;align-items:start; }
+.compact-policy-editor,.compact-policy-result { min-width:0; }
+.compact-policy-result { padding-top:4px; }
+.compact-policy-lead { margin:0 0 18px;color:var(--muted);font-size:17px; }
+.compact-rule-builder { margin-top:8px; }
+.compact-rule-builder fieldset { margin:0 0 11px;padding:0;border:0; }
+.compact-rule-builder legend { margin-bottom:9px;color:var(--text);font-size:14px;font-weight:850; }
+.policy-chips { display:flex;flex-wrap:wrap;gap:9px; }
+.policy-chip { display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:8px 14px;color:#c8dad9;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.035);cursor:pointer;font-size:14px;font-weight:800;line-height:1.4;transition:border-color .16s var(--ease),background .16s var(--ease); }
+.policy-chip:hover { border-color:var(--cyan); }
+.policy-chip.selected { color:#061923;border-color:var(--cyan);background:var(--cyan); }
+.policy-chip .icon { width:15px;height:15px; }
+.policy-mode-tabs { display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0 0 16px;padding:4px;border:1px solid var(--line);border-radius:var(--r-m);background:rgba(255,255,255,.025); }
+.policy-mode-tabs button { display:grid;gap:2px;min-width:0;min-height:52px;padding:7px 10px;color:#9fb5b6;border:1px solid transparent;border-radius:calc(var(--r-m) - 4px);background:transparent;cursor:pointer;font-size:14px;font-weight:850;line-height:1.3;text-align:left; }
+.policy-mode-tabs button small { font-size:11px;font-weight:650;line-height:1.3; }
+.policy-mode-tabs button[aria-pressed="true"] { color:#061923;border-color:var(--cyan);background:var(--cyan); }
+.policy-mode-tabs button[aria-pressed="true"] small { color:#17443f; }
+.compact-rule-fields { display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:6px; }
+.compact-rule-fields label { display:grid;gap:8px;color:var(--text);font-size:14px;font-weight:850; }
+.compact-rule-fields input { min-height:52px;padding:11px 14px;color:var(--text);border:1px solid var(--line);border-radius:var(--r-s);background:rgba(255,255,255,.055);font-size:16px; }
+.compact-rule-fields input:focus-visible { border-color:var(--cyan); }
+.compact-rule-builder .rule-preview,.compact-policy-result .rule-preview { margin:0 0 14px;padding:15px 17px; }
+.compact-rule-builder .rule-preview p { font-size:16px;line-height:1.7; }
+.policy-line { display:grid;grid-template-columns:168px minmax(0,1fr);gap:12px;align-items:center;min-height:36px; }
+.policy-line+.policy-line { margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,.07); }
+.policy-line strong { display:inline-flex;align-items:center;width:max-content;max-width:100%;min-height:26px;padding:4px 9px;color:#b9dddd;border:1px solid rgba(111,176,161,.3);border-radius:7px;background:rgba(111,176,161,.08);font-size:12px;font-weight:900;line-height:1.3;white-space:nowrap; }
+.policy-line>span { min-width:0;color:#edf5f4;font-weight:750;overflow-wrap:anywhere; }
+.compact-policy-result .rule-preview p { font-size:15px;line-height:1.65; }
+.compact-guidance { margin:0 0 16px;border:1px solid rgba(201,161,95,.32);border-radius:var(--r-s);background:rgba(201,161,95,.05); }
+.compact-guidance summary { padding:11px 14px;color:#e8cf98;cursor:pointer;font-size:13.5px;font-weight:850;line-height:1.5;list-style-position:inside; }
+.compact-guidance p { margin:0;padding:0 14px 12px;color:#c5d5d4;font-size:13.5px;line-height:1.7; }
+.compact-guidance p+p { padding-top:0;color:#9fb5b6; }
+.compact-ending { max-width:720px;margin:auto; }
+.compact-ending-head { display:flex;align-items:center;gap:18px;margin-bottom:18px; }
+.compact-ending-head .ending-compass { flex:none;width:58px;height:58px;font-size:27px; }
+.compact-ending-head .ending-badge { margin:0 0 3px; }
+.compact-ending-head h1 { margin:0!important; }
+.compact-ending .ending-policy blockquote { font-size:16px;line-height:1.65;overflow-wrap:anywhere; }
+.compact-ending .ending-policy .policy-line { display:grid; }
 
 .result-layout { display:block; }
 .outcome { margin-top:20px;padding:18px;color:var(--text);border-left:3px solid var(--gold);border-radius:0 var(--r-s) var(--r-s) 0;background:rgba(255,255,255,.05); }
@@ -609,16 +683,18 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
   .story-phase { gap:12px; }
   .story-steps i { width:12px; }
   .story-steps i.now { width:24px; }
+  .compact-policy-layout { grid-template-columns:1fr;gap:18px; }
+  .compact-policy-result { padding-top:0; }
 }
 @media (max-width:700px) {
-  .story-bar { gap:10px;width:calc(100% - 22px);height:56px; }
+  .story-bar { grid-template-columns:42px minmax(0,1fr) 42px;gap:8px;width:calc(100% - 22px);height:56px; }
   .story-back span { display:none; }
   .story-phase { justify-content:flex-start;gap:10px; }
   .story-phase strong { flex-direction:column;gap:0; }
   .story-phase strong em { font-size:14px; }
   .story-steps i,.story-steps b { display:none; }
   .story-steps i.done,.story-steps i.now,.story-steps b { display:block; }
-  .story-who span { display:none; }
+  .story-bar-spacer { width:42px; }
   .game-shade { background:linear-gradient(0deg,rgba(3,14,23,.98),rgba(3,14,23,.86) 55%,rgba(3,14,23,.5)); }
   .game-stage { width:calc(100% - 22px);padding:14px 0 30px; }
   .episode-content { position:relative;z-index:3;width:100%;padding:0 0 32px; }
@@ -630,6 +706,30 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
   .choice-card { min-height:62px;font-size:17px; }
   .step-actions>* { flex:1; }
   .perspective-grid { grid-template-columns:1fr; }
+  .compact-flow .story-copy,.compact-flow .question-layout,.compact-flow .compact-policy,.compact-flow .ending { padding:20px 15px; }
+  .compact-facts { grid-template-columns:1fr; }
+  .compact-reconsider-list,.tradeoff-grid { grid-template-columns:1fr; }
+  .compact-choice-card>span:last-child { font-size:16px; }
+  .compact-rule-fields { grid-template-columns:1fr; }
+  .policy-line { grid-template-columns:1fr;gap:4px;align-items:start; }
+  .compact-ending-head { align-items:flex-start;gap:12px; }
+  .compact-ending-head .ending-compass { width:48px;height:48px;font-size:23px; }
+}
+
+@media (max-height:780px) and (min-width:701px) {
+  .compact-flow .game-stage { align-items:flex-start;padding-top:12px;padding-bottom:22px; }
+  .compact-flow .story-copy,.compact-flow .question-layout,.compact-flow .compact-policy,.compact-flow .ending { padding:24px 26px; }
+  .compact-flow .story-text { margin:17px 0;line-height:1.72; }
+  .compact-situation .scene-msg { margin:17px 0; }
+  .compact-facts { margin:17px 0 20px; }
+  .compact-facts>div { min-height:66px;padding:12px 14px; }
+  .compact-flow .choice-list { margin:16px 0 6px; }
+  .compact-flow .choice-card { min-height:60px; }
+  .compact-flow .boundary-note { margin-bottom:9px;padding-top:9px;padding-bottom:9px; }
+  .compact-flow .perspective-grid article { padding:11px 13px; }
+  .compact-flow .perspective-grid h2 { margin:7px 0 4px; }
+  .compact-flow .perspective-grid p { font-size:13.5px;line-height:1.5; }
+  .compact-flow .rule-preview { margin:11px 0;padding:12px 15px; }
 }
 
 /* =========================================================================
@@ -789,9 +889,9 @@ body[data-view="episode"][data-step="0"] .story-copy { margin-top:auto; }
         <ul class="plain-list">
           <li><b>人の権利で決まっている線</b>（CASE 03 個人情報／CASE 08 著作権）…どの学校でも変わりません。</li>
           <li><b>安全のために決まっている線</b>（CASE 11）…どの学校でも変わりません。</li>
-          <li><b>学校のきまりで決まっている線</b>（CASE 01・CASE 09）…<b>学校ごとに違います。</b></li>
+          <li><b>使う前に確認すること</b>（CASE 01・CASE 09）…その都度、授業で示された資料や指示を確認します。</li>
         </ul>
-        <p><b>他校でご利用の場合は、CASE 01 と CASE 09 の2件だけご確認ください。</b>この2件は提出物へのAI利用に関する各校の運用が根拠のため、教材では「多くの学校で認められていません」という表現に留め、生徒には自校のきまりを確かめるよう促しています。貴校の運用と異なる場合は、その旨を口頭で補ってください。</p>
+        <p><b>CASE 01 と CASE 09では、AIを使う前の確認を扱います。</b>生徒がその都度、授業で示された資料や指示を確認し、分からないときは先生に聞く流れを補足してください。</p>
         <p>この3分類は本教材独自の整理です。公的な基準ではありません。</p>
       </section>
 
@@ -863,7 +963,7 @@ window.AI_COMPASS_CHARACTERS = [
   <script>
 window.AI_COMPASS_EPISODES = [
   {
-    id: "essay", number: "01", title: "明日提出の英作文", time: "夕方 6:20", place: "自宅", category: "学習", duration: "約4分", compassLabel: "任せる範囲", compassQuestion: "どこまでAIに任せるの？", compassDirection: "目的",
+    id: "essay", number: "01", title: "明日提出の英作文", time: "夕方 6:20", place: "自宅", category: "学習", duration: "約4分", impactTitle: "その翌日——", compassLabel: "任せる範囲", compassQuestion: "どこまでAIに任せるの？", compassDirection: "目的",
     scene: "明日提出の「将来の夢」の作文が、まだ半分も書けていない。そこへ、友達からメッセージが届いた。",
     message: "AIなら一瞬だよ。先生にも分からないって。どうする？",
     factors: [
@@ -875,15 +975,15 @@ window.AI_COMPASS_EPISODES = [
     choices: [
       { id: "translate", label: "日本語で全部書き、AIに英訳してもらう", reasons: ["考えは自分のものだから", "英語に直す時間を短くしたい", "難しい表現も使ってみたい"], outcome: "先生から英文を見ずに説明を求められた。考えは話せるが、AIが選んだ表現の意味を一つ聞かれて止まってしまう。", gain: "内容を自分で考え、英訳時間を減らせる", caution: "英語の難しさが自分の理解を越えることがある", responsibility: "訳された全表現の意味を確かめる" },
       { id: "parts", label: "書けない一文だけ相談し、残りは自分で書く", reasons: ["苦手な所だけ助けてほしい", "自分の英語も残したい", "相談した部分なら確認できそう"], outcome: "説明を求められ、ほとんどは話せた。相談した一文だけ言い換えに迷い、どんな助けを使ったか先生に伝えることにした。", gain: "つまずきを越えつつ自分の文章を保てる", caution: "提案された一文にも確認が必要", responsibility: "使った支援と理解できる範囲を説明する" },
-      { id: "full", label: "テーマだけ伝え、全文を作ってもらう", reasons: ["締切に間に合わせたい", "自然な英語なら評価も上がりそう", "自分の考えを伝えれば自分の作文だと思う"], outcome: "翌日、先生が英文を閉じて言った。『将来の夢について、今の言葉で少し説明してみて』。文中の表現が思い出せない。", gain: "短時間で整った英文が完成する", caution: "自分で説明できない表現まで混ざる", responsibility: "提出した内容を自分の言葉で説明する" },
+      { id: "full", label: "テーマだけ伝え、全文を作ってもらう", reasons: ["締切に間に合わせたい", "自然な英語なら評価も上がりそう", "自分の考えを伝えれば自分の作文だと思う"], outcome: "翌日、先生が作文を伏せて言った。『将来の夢について、自分の言葉で少し説明してみて』。AIが使った表現を思い出せず、言葉に詰まった。", gain: "短時間で整った英文が完成する", caution: "自分で説明できない表現まで混ざる", responsibility: "提出した内容を自分の言葉で説明する" },
       { id: "check", label: "まず自分で書き、文法の確認だけ頼む", reasons: ["自分の力で内容を伝えたい", "間違いだけは減らしたい", "直された理由も知りたい"], outcome: "先生の問いに、自分が書いた表現で答えられた。ただ、AIの修正を一か所そのまま採用し、なぜ直ったかは説明できなかった。", gain: "自分の内容と英語を中心にできる", caution: "修正が常に必要・正確とは限らない", responsibility: "変更点を比べ、採用理由を決める" }
     ],
     ruleStarters: ["表現の候補", "文法の確認", "書けない部分の相談"], ruleEnds: ["内容は自分で考え、説明できるようにする", "提案の意味を確かめてから使う", "使ったことを必要な相手に伝える"], discussion: "提出物でAIを使ったとき、どこまで説明できれば『自分の作品』と言えるだろう？",
-    boundary: { basis: "school", line: "テーマだけ伝え、全文を作ってもらう", note: "AIが作った文章をほぼそのまま提出物として出すことは、多くの学校で認められていません。下書きの参考にしたり、表現を相談したりする使い方とは分けて考えます。" }
+    boundary: { basis: "school", line: "テーマだけ伝え、全文を作ってもらう", note: "その都度、授業で示された資料や指示を自分で確認し、分からないときは先生に聞こう。" }
   },
   {
-    id: "presentation", number: "02", title: "グループ発表、あと10分", time: "昼休み 残り10分", place: "教室", category: "共同作業", duration: "約4分", compassLabel: "目的", compassQuestion: "何のためにAIを使うの？", compassDirection: "目的", messageMode: "spoken",
-    scene: "先生からは学校指定のAIサービスを授業で使ってよいと言われている。4人の発表資料はまだ未完成で、ほかの2人は別の作業中だ。そこへ、同じ班のメンバーから提案が届いた。",
+    id: "presentation", number: "02", title: "グループ発表、あと10分", time: "昼休み 残り10分", place: "教室", category: "共同作業", duration: "約4分", impactTitle: "発表が始まると——", compassLabel: "目的", compassQuestion: "何のためにAIを使うの？", compassDirection: "目的", messageMode: "spoken",
+    scene: "発表まであと10分。4人の資料はまだ未完成で、2人は別の作業中だ。学校指定のAIは、授業で使ってよいことになっている。",
     message: "私がAIで文章も画像も作るよ。ほかのみんなには後で言えばよくない？",
     factors: [
       { label: "残り時間", value: "10分" },
@@ -900,7 +1000,7 @@ window.AI_COMPASS_EPISODES = [
     ruleStarters: ["構成の下書き", "図のアイデア", "表現の候補"], ruleEnds: ["全員で使い方を決める", "根拠を分担して確認する", "全員が説明できる形に直す"], discussion: "共同作品でAIを使う判断は、誰が・いつ・どのように決めるとよいだろう？"
   },
   {
-    id: "photo", number: "03", title: "友達の写真を面白くしたい", time: "放課後", place: "教室", category: "友達・SNS", duration: "約4分", compassLabel: "情報を守る", compassQuestion: "入力してはいけない情報はない？", compassDirection: "権利", messageMode: "spoken",
+    id: "photo", number: "03", title: "友達の写真を面白くしたい", time: "放課後", place: "教室", category: "友達・SNS", duration: "約4分", impactTitle: "その後——", compassLabel: "情報を守る", compassQuestion: "入力してはいけない情報はない？", compassDirection: "権利", messageMode: "spoken",
     scene: "行事で撮った友達の写真が、まだ自分の端末に残っている。誰にも送っていない。",
     message: "この写真、AIで面白くしたら絶対盛り上がるよ。グループだけならいいよね？",
     factors: [
@@ -908,11 +1008,11 @@ window.AI_COMPASS_EPISODES = [
       { label: "入力先", value: "AIサービス" },
       { label: "共有先", value: "グループチャット" }
     ],
-    prompt: "送る前に、どうする？",
+    prompt: "写真をAIへ送る前に、どうする？",
     choices: [
-      { id: "ask-share", label: "加工後に本人へ見せ、共有してよいか聞く", reasons: ["完成品を見ないと判断できないと思う", "本人が笑えば問題ないと思う", "共有の許可は必要だと思う"], outcome: "本人は加工を見て笑い、共有にもOKした。でも後で、写真をAIサービスへ送ったことは聞いていないと言われた。", gain: "共有前に本人の反応を確認できる", caution: "加工前のAI入力については同意を得ていない", responsibility: "入力と共有を別々に説明して確認する" },
+      { id: "ask-share", label: "加工後に本人へ見せ、共有してよいか聞く", reasons: ["完成品を見ないと判断できないと思う", "本人が笑えば問題ないと思う", "共有の許可は必要だと思う"], outcome: "本人は加工を見て笑い、共有にも同意した。でも後で、『写真をAIサービスへ送るとは聞いていなかった』と言われた。", gain: "共有前に本人の反応を確認できる", caution: "加工前のAI入力については同意を得ていない", responsibility: "入力と共有を別々に説明して確認する" },
       { id: "ask-both", label: "AIへの入力と共有を、先に本人へ別々に聞く", reasons: ["写真は本人の情報だから", "どこへ送るかも伝えたい", "断りやすい聞き方にしたい"], outcome: "本人は『加工は見たい。でもチャットには出さないで』と答えた。端末上で一緒に見て、保存せずに終えた。", gain: "本人が範囲を選べる", caution: "同意があってもサービスの扱いや保存条件は残る", responsibility: "同意の範囲とサービスの条件を確かめる" },
-      { id: "alternative", label: "人物写真は使わず、別の画像でネタを作る", reasons: ["許可を取る時間がない", "人の写真を送るのが気になる", "別の方法でも楽しめそう"], outcome: "行事の道具をモデルにした画像を作ると、友達もアイデアを足して盛り上がった。人物写真を使わない工夫ができた。", gain: "個人の写真を外部へ送らず楽しめる", caution: "別素材にも権利や個人情報がないか確認が必要", responsibility: "使う素材と共有範囲を選ぶ" },
+      { id: "alternative", label: "人物写真は使わず、別の画像でネタを作る", reasons: ["許可を取る時間がない", "人の写真を送るのが気になる", "別の方法でも楽しめそう"], outcome: "行事で使った道具をモチーフに画像を作ると、友達もアイデアを加えて盛り上がった。人物写真を使わずに楽しめた。", gain: "個人の写真を外部へ送らず楽しめる", caution: "別素材にも権利や個人情報がないか確認が必要", responsibility: "使う素材と共有範囲を選ぶ" },
       { id: "send", label: "楽しい加工なので、そのまま作って共有する", reasons: ["悪意はなく、喜ぶと思う", "仲のよいグループだけだから", "元の写真もみんな持っているから"], outcome: "本人も最初は笑った。でも翌日、別のグループから画像が届き『知らない人まで持ってる』と困った顔をした。", gain: "その場をすぐ盛り上げられる", caution: "AIへの送信と拡散は元に戻せないことがある", responsibility: "写っている人と画像の行き先を守る" }
     ],
     ruleStarters: ["人物を含まないアイデア作り", "本人と一緒に考えること", "共有前の見せ方の相談"], ruleEnds: ["写真の入力と共有は別々に確認する", "断っても困らない聞き方をする", "一度広がると戻せない前提で決める"], discussion: "写真の本人が『いいよ』と言うとき、どんな情報まで伝わっている必要があるだろう？",
@@ -928,7 +1028,7 @@ window.AI_COMPASS_EPISODES = [
 
   const extra = [
     {
-      id: "factcheck", number: "04", chapter: "check", title: "その答え、本当に合ってる？", time: "夜 8:20", place: "自宅", category: "情報確認", duration: "約4分", compassLabel: "根拠", compassQuestion: "何を確かめれば、使える情報になる？", compassDirection: "根拠",
+      id: "factcheck", number: "04", chapter: "check", title: "その答え、本当に合ってる？", time: "夜 8:20", place: "自宅", category: "情報確認", duration: "約4分", impactTitle: "その後——", compassLabel: "根拠", compassQuestion: "何を確かめれば、使える情報になる？", compassDirection: "根拠",
       scene: "理科のレポートをAIに相談すると、もっともらしい説明と参考文献が出てきた。けれど、検索しても同じ文献が見つからない。提出は明日だ。", message: "文章も自然だし、参考文献まであるなら使っていいんじゃない？",
       factors: [{label:"提出まで",value:"明日"},{label:"見つからないもの",value:"参考文献"},{label:"説明する人",value:"あなた"}], prompt: "この情報をどう扱う？",
       choices: [
@@ -938,25 +1038,25 @@ window.AI_COMPASS_EPISODES = [
       ], ruleStarters:["考えを整理する","確認する点を見つける","資料の候補を探す"],ruleEnds:["複数の資料で根拠を確かめる","見つからない出典は使わない","不明な点を人に相談する"],discussion:"『分からない』と判断するには、何をどこまで調べればよいだろう？"
     },
     {
-      id:"career",number:"05",chapter:"self",title:"「向いている仕事」はこれ",time:"進路学習",place:"教室",category:"進路・自己決定",duration:"約4分",compassLabel:"自己決定",compassQuestion:"AIの分析を、どこまで自分の判断に入れる？",compassDirection:"次の行動",messageMode:"spoken",
+      id:"career",number:"05",chapter:"self",title:"「向いている仕事」はこれ",time:"進路学習",place:"教室",category:"進路・自己決定",duration:"約4分",impactTitle:"しばらくして——",compassLabel:"自己決定",compassQuestion:"AIの分析を、どこまで自分の判断に入れる？",compassDirection:"次の行動",messageMode:"spoken",
       scene:"短い質問に答えると、AIが『あなたは人と接する仕事に向いていません』と表示した。少し気になっていた仕事まで否定された気がする。",message:"AIはたくさんのデータを知ってるんだから、当たってるんじゃない？",factors:[{label:"判断材料",value:"短い回答"},{label:"決めること",value:"将来の進路"},{label:"まだないもの",value:"実際の体験"}],prompt:"この結果をどう受け止める？",
       choices:[
-        {id:"accept",label:"自分には向かないと考え、候補から外す",reasons:["失敗したくない","AIの方が客観的そう","迷いを減らしたい"],outcome:"別の進路を調べ始めたが、職場体験の案内を見るたびに気持ちが残った。",gain:"選択肢を早く絞れる",caution:"少ない情報や偏った基準で可能性を狭める",responsibility:"進路を外す根拠を自分で確かめる"},
+        {id:"accept",label:"自分には向かないと考え、候補から外す",reasons:["失敗したくない","AIの方が客観的そう","迷いを減らしたい"],outcome:"別の進路を調べ始めたが、職場体験の案内を見るたびに、その仕事への興味を捨てきれない自分に気づいた。",gain:"選択肢を早く絞れる",caution:"少ない情報や偏った基準で可能性を狭める",responsibility:"進路を外す根拠を自分で確かめる"},
         {id:"clue",label:"一つの見方として、理由だけ確認する",reasons:["参考にはしたい","弱点も知りたい","決定は自分でしたい"],outcome:"理由には納得できる部分と、今の自分に当てはまらない部分があった。",gain:"自分を見直す材料が増える",caution:"AIの分類を客観的事実と思いやすい",responsibility:"当てはまるかを経験と照らす"},
         {id:"experience",label:"人に相談し、実際に体験してから考える",reasons:["仕事を直接知りたい","他の人の見方も聞きたい","挑戦して確かめたい"],outcome:"職場体験では緊張したが、人と関わる仕事の中にも多様な役割があると分かった。",gain:"現実の経験から考えられる",caution:"一度の体験だけでも決め切れない",responsibility:"複数の材料から自分で選ぶ"}
       ],ruleStarters:["考える材料を増やす","自分への質問を作る","仕事の特徴を整理する"],ruleEnds:["進路の決定は自分で行う","人の意見や体験とも比べる","分類だけで可能性を閉じない"],discussion:"その一言の裏には、どんな根拠があるのだろう？"
     },
     {
-      id:"apology",number:"06",chapter:"together",title:"AIが書いた謝罪メッセージ",time:"放課後",place:"帰り道",category:"人間関係",duration:"約4分",compassLabel:"言葉と責任",compassQuestion:"送った言葉を、自分の言葉として引き受けられる？",compassDirection:"責任",
+      id:"apology",number:"06",chapter:"together",title:"AIが書いた謝罪メッセージ",time:"放課後",place:"帰り道",category:"人間関係",duration:"約4分",impactTitle:"その後——",compassLabel:"言葉と責任",compassQuestion:"送った言葉を、自分の言葉として引き受けられる？",compassDirection:"責任",
       scene:"友達を傷つけてしまった。AIが作った謝罪文は立派だが、自分では言わない表現が並んでいる。",message:"文章が上手な方が、ちゃんと反省してるって伝わるよ。",factors:[{label:"守りたいもの",value:"友達との関係"},{label:"文章を作った人",value:"AI"},{label:"伝える人",value:"あなた"}],prompt:"どう謝る？",
       choices:[
-        {id:"rewrite",label:"AI案を見て、自分の言葉に書き直す",reasons:["言い方の参考がほしい","気持ちは自分で伝えたい","何を謝るか整理したい"],outcome:"短い文章になったが、何を悪かったと思ったかを具体的に伝えられた。",gain:"考えを整理しながら伝えられる",caution:"文章だけで解決しないこともある",responsibility:"相手の反応を受け止める"},
+        {id:"rewrite",label:"AI案を見て、自分の言葉に書き直す",reasons:["言い方の参考がほしい","気持ちは自分で伝えたい","何を謝るか整理したい"],outcome:"短い文章になったが、何が悪かったのかを具体的に伝えられた。",gain:"考えを整理しながら伝えられる",caution:"文章だけで解決しないこともある",responsibility:"相手の反応を受け止める"},
         {id:"talk",label:"信頼できる人に相談してから、自分で話す",reasons:["直接伝えたい","一人では不安","相手の気持ちも考えたい"],outcome:"すぐには許してもらえなかったが、言い訳せずに話を聞くことができた。",gain:"関係を対話で修復できる",caution:"相手には話したくない時間もある",responsibility:"相手の選択と時間を尊重する"},
         {id:"send",label:"AIの文章をそのまま送る",reasons:["失敗したくない","きれいな言葉で伝えたい","今すぐ謝りたい"],outcome:"友達から『これ、本当にあなたが書いたの？』と返ってきた。",gain:"すぐに整った謝罪を送れる",caution:"自分の理解や気持ちが見えにくい",responsibility:"送った言葉の意味を引き受ける"}
       ],ruleStarters:["気持ちを整理する","言い方の候補を考える","話す順序を考える"],ruleEnds:["謝る内容は自分で理解する","自分の言葉に直して伝える","相手の反応を受け止める"],discussion:"AIに助けてもらった言葉でも、本当の気持ちは伝えられるだろうか？"
     },
     {
-      id:"rumor",number:"07",chapter:"check",title:"友達から届いた「拡散して」",time:"夜 7:15",place:"グループチャット",category:"情報発信",duration:"約4分",compassLabel:"拡散と影響",compassQuestion:"送信する前に、誰への影響を考える？",compassDirection:"責任",
+      id:"rumor",number:"07",chapter:"check",title:"友達から届いた「拡散して」",time:"夜 7:15",place:"グループチャット",category:"情報発信",duration:"約4分",impactTitle:"その後——",compassLabel:"拡散と影響",compassQuestion:"送信する前に、誰への影響を考える？",compassDirection:"責任",
       scene:"友達から、ある情報が転送されてきた。AIは『事実の可能性が高い』と答えたが、元の情報源は分からない。",message:"大事な話かもしれない。早く回した方が親切だよ。",factors:[{label:"情報源",value:"不明"},{label:"AIの回答",value:"可能性が高い"},{label:"送信先",value:"クラス全員"}],prompt:"送信する前にどうする？",
       choices:[
         {id:"source",label:"一次情報と日時を確認する",reasons:["本当か確かめたい","古い情報かもしれない","元の文章を読みたい"],outcome:"似た話はあったが、今回の学校とは無関係だと分かった。",gain:"文脈を確かめて判断できる",caution:"検索上位が一次情報とは限らない",responsibility:"発信者と原文までたどる"},
@@ -965,7 +1065,7 @@ window.AI_COMPASS_EPISODES = [
       ],ruleStarters:["確認項目を整理する","一次情報を探す","別の見方を考える"],ruleEnds:["発信者と日時を確かめる","本人や社会への影響を考える","不明な情報は転送を止める"],discussion:"『友達が言った』『AIも言った』は、確かな根拠になるだろうか？"
     },
     {
-      id:"copyright",number:"08",chapter:"create",title:"このイラスト、どこかで見た気がする",time:"文化祭準備",place:"美術室",category:"創作・著作権",duration:"約4分",compassLabel:"創作と権利",compassQuestion:"魅力的に作ることと、他者の権利をどう両立する？",compassDirection:"権利",messageMode:"spoken",
+      id:"copyright",number:"08",chapter:"create",title:"このイラスト、どこかで見た気がする",time:"文化祭準備",place:"美術室",category:"創作・著作権",duration:"約4分",impactTitle:"準備を進めると——",compassLabel:"創作と権利",compassQuestion:"魅力的に作ることと、他者の権利をどう両立する？",compassDirection:"権利",messageMode:"spoken",
       scene:"AIで作った文化祭ポスターは完成度が高い。しかし、有名作品のキャラクターや画風にかなり似ている。",message:"AIが作ったんだから、私たちの責任じゃなくない？",factors:[{label:"公開先",value:"学校内外"},{label:"似ているもの",value:"既存作品"},{label:"作成方法",value:"生成AI"}],prompt:"このポスターをどうする？",
       choices:[
         {id:"publish",label:"AI生成なので、そのまま公開する",reasons:["自分たちは描いていない","完成度が高い","時間がない"],outcome:"公開後、元作品のファンから似ていると指摘された。説明できる人がいなかった。",gain:"すぐに目を引く作品を出せる",caution:"生成した人にも利用時の責任がある",responsibility:"公開物の権利関係を確認する"},
@@ -975,17 +1075,17 @@ window.AI_COMPASS_EPISODES = [
       boundary:{basis:"rights",line:"似ている作品をそのまま公開すること",note:"既存の作品によく似た生成物をそのまま公開すると、他の人の著作権を侵害するおそれがあります。似ていると気づいたときは、公開する前に必ず先生と確認します。"}
     },
     {
-      id:"opinion",number:"09",chapter:"create",title:"AIの方が私の意見をうまく言える",time:"社会科",place:"教室",category:"表現・提出",duration:"約4分",compassLabel:"自分の考え",compassQuestion:"上手な文章と、自分の意見の境界はどこ？",compassDirection:"根拠",messageMode:"spoken",
+      id:"opinion",number:"09",chapter:"create",title:"AIの方が私の意見をうまく言える",time:"社会科",place:"教室",category:"表現・提出",duration:"約4分",impactTitle:"提出した後——",compassLabel:"自分の考え",compassQuestion:"上手な文章と、自分の意見の境界はどこ？",compassDirection:"根拠",messageMode:"spoken",
       scene:"地域の将来について書いた自分の文章は短い。AIの文章は説得力があるが、自分が考えていなかった主張まで入っている。",message:"内容が良くなるなら、その意見も入れちゃえば？",factors:[{label:"課題",value:"自分の意見"},{label:"AIの文章",value:"説得力がある"},{label:"混ざったもの",value:"考えていない主張"}],prompt:"どの文章を提出する？",
       choices:[
         {id:"compare",label:"自分の文と比べ、納得した部分だけ直す",reasons:["表現を学びたい","意見は自分で選びたい","違いを見たい"],outcome:"文章は大きく変わらなかったが、自分の経験を加えて理由を具体化できた。",gain:"自分の考えを保ちながら推敲できる",caution:"採用した表現の意味も確認が必要",responsibility:"変更した理由を説明できるようにする"},
-        {id:"replace",label:"説得力のあるAI文章に置き換える",reasons:["評価を上げたい","自分より上手い","主張も悪くない"],outcome:"先生から主張の理由を聞かれ、自分の経験と結び付けて答えられなかった。",gain:"整った文章を短時間で作れる",caution:"自分が考えていない主張が自分の名で出る",responsibility:"提出した意見の理由を説明する"},
+        {id:"replace",label:"AIが作った説得力のある文章に置き換える",reasons:["評価を上げたい","自分より上手い","主張も悪くない"],outcome:"先生から主張の理由を聞かれ、自分の経験と結び付けて答えられなかった。",gain:"整った文章を短時間で作れる",caution:"自分が考えていない主張が自分の名で出る",responsibility:"提出した意見の理由を説明する"},
         {id:"dialogue",label:"AIの反対意見を読み、自分の考えを深める",reasons:["別の立場を知りたい","考え直したい","文章より中身を深めたい"],outcome:"最初の意見は一部変わり、賛成と反対の両方を踏まえた自分の結論になった。",gain:"複数の視点から考えられる",caution:"AIが全ての立場を公平に示すとは限らない",responsibility:"不足する視点を人との対話でも補う"}
       ],ruleStarters:["別の視点を出す","表現を比較する","反対意見を考える"],ruleEnds:["採用する主張は自分で選ぶ","根拠を確認して説明する","自分の経験や考えを残す"],discussion:"文章が上手であることと、自分の意見であることは同じだろうか？",
-      boundary:{basis:"school",line:"説得力のあるAI文章に置き換える",note:"AIが書いた文章をそのまま自分の意見として提出することは、多くの学校で認められていません。参考にした部分は、自分の言葉で理由まで説明できる形に直します。"}
+      boundary:{basis:"school",line:"AIが作った説得力のある文章に置き換える",note:"その都度、授業で示された資料や指示を自分で確認し、分からないときは先生に聞こう。"}
     },
     {
-      id:"grouping",number:"10",chapter:"together",title:"AIが決めたグループ分け",time:"総合の時間",place:"教室",category:"公平性・協働",duration:"約4分",compassLabel:"公平性",compassQuestion:"効率のよい決定は、誰にとって公平？",compassDirection:"権利",messageMode:"spoken",
+      id:"grouping",number:"10",chapter:"together",title:"AIが決めたグループ分け",time:"総合の時間",place:"教室",category:"公平性・協働",duration:"約4分",impactTitle:"役割を決めた後——",compassLabel:"公平性",compassQuestion:"効率のよい決定は、誰にとって公平？",compassDirection:"権利",messageMode:"spoken",
       scene:"得意なことをAIに入力して役割を決める案が出た。効率はよさそうだが、希望していない役割になった人もいる。",message:"AIなら人間より公平に決めてくれるよ。",factors:[{label:"入力するもの",value:"一人一人の特徴"},{label:"決めるもの",value:"役割"},{label:"足りないもの",value:"本人の希望"}],prompt:"役割をどう決める？",
       choices:[
         {id:"draft",label:"AI案をたたき台にして、全員で直す",reasons:["案は参考にしたい","希望も聞きたい","苦手な役割も支えたい"],outcome:"変更を希望する人が出て、交替とペア担当を組み合わせることになった。",gain:"効率と対話を組み合わせられる",caution:"AIに何を入力するかにも注意が必要",responsibility:"個人情報を入れず、本人が決定に参加する"},
@@ -994,23 +1094,23 @@ window.AI_COMPASS_EPISODES = [
       ],ruleStarters:["役割案を整理する","抜けている視点を探す","話し合いの材料を作る"],ruleEnds:["本人の希望を確認する","個人情報を入力しない","最終決定を全員で説明できるようにする"],discussion:"AIが公平に見えるとき、人間の話し合いは必要ないのだろうか？"
     },
     {
-      id:"stranger",number:"11",chapter:"check",title:"知らない人からの相談メッセージ",time:"夜 10:05",place:"SNS",category:"安全・SNS",duration:"約4分",compassLabel:"親切と安全",compassQuestion:"助けたい気持ちと、自分の安全をどう両立する？",compassDirection:"次の行動",
+      id:"stranger",number:"11",chapter:"check",title:"知らない人からの相談メッセージ",time:"夜 10:05",place:"SNS",category:"安全・SNS",duration:"約4分",impactTitle:"その後——",compassLabel:"親切と安全",compassQuestion:"助けたい気持ちと、自分の安全をどう両立する？",compassDirection:"次の行動",
       scene:"SNSで知らない人から『同じ悩みを持っている。話を聞いて』と連絡が来た。AIは、親切に詳しく聞くよう勧めている。",message:"困っている人を無視するのは、かわいそうじゃない？",factors:[{label:"相手",value:"知らない人"},{label:"確かめられないもの",value:"身元と状況"},{label:"守るもの",value:"自分と相手の安全"}],prompt:"メッセージにどう対応する？",
       choices:[
         {id:"adult",label:"返信せず、画面を保存して大人に相談する",reasons:["一人で判断しにくい","相手の言葉が気になる","安全を守りたい"],outcome:"相談した大人と一緒に、返信せず通報・ブロックすることを決めた。",gain:"安全な距離を保って判断できる",caution:"本当に困っている相手に直接は応えられない",responsibility:"適切な相談窓口へつなぐ方法を知る"},
         {id:"reply",label:"詳しく聞き、自分の経験も伝える",reasons:["助けたい","同じ悩みなら分かり合える","AIも勧めている"],outcome:"相手から学校名や写真を尋ねられ、断ると強い言葉が返ってきた。",gain:"相手に寄り添える可能性がある",caution:"身元や目的を確認できず、個人情報を求められる",responsibility:"自分一人で危険を抱え込まない"},
         {id:"general",label:"個人情報を出さず、公的な相談先だけ案内する",reasons:["助ける方法を残したい","個人的なやり取りは避けたい","専門家につなぎたい"],outcome:"相談先を伝えた後も個人的な質問が続いたため、返信を止めて大人に相談した。",gain:"支援先を示しながら距離を取れる",caution:"返信を続けるよう迫られる場合がある",responsibility:"危険を感じたらやり取りを止める"}
-      ],ruleStarters:["一般的な相談先を探す","危険の可能性を整理する","対応案を考える"],ruleEnds:["氏名・学校・写真を伝えない","一人で抱えず大人に相談する","危険を感じたら返信を止める"],discussion:"親切にすることと、自分の安全を守ることをどう両立するか？",
+      ],ruleStarters:["一般的な相談先を探す","危険の可能性を整理する","対応案を考える"],ruleEnds:["氏名・学校・写真を伝えない","一人で抱えず大人に相談する","危険を感じたら返信を止める"],discussion:"親切にすることと、自分の安全を守ることは、どう両立できるだろう？",
       boundary:{basis:"safety",line:"身元の分からない相手に、自分の経験や個人的な話を詳しく伝えること",note:"身元が確かめられない相手に、自分を特定できる情報や個人的な話を伝えることは、どんな場面でも避けます。相手が困っていそうなときも、まずは公的な相談先を案内し、大人に相談します。"}
     },
     {
-      id:"newapp",number:"12",chapter:"check",title:"そのアプリ、使ってもいい？",time:"放課後",place:"自宅",category:"情報セキュリティ",duration:"約4分",compassLabel:"情報の扱われ方",compassQuestion:"そのサービスに、何を渡すことになる？",compassDirection:"権利",messageMode:"spoken",
-      scene:"テスト前に、友達が新しいAI学習アプリを見せてくれた。使うには、名前・学年・学校名を入力してアカウントを作る必要があるらしい。学校が使っているアプリとは別のものだ。",message:"本名じゃなくてもいいし、無料だし、とりあえず使ってみようよ。",factors:[{label:"必要な情報",value:"名前・学年・学校名"},{label:"学校の指定",value:"別のアプリ"},{label:"利用規約",value:"確認していない"}],prompt:"使う前に、何を確かめる？",
+      id:"newapp",number:"12",chapter:"check",title:"そのアプリ、使ってもいい？",time:"放課後",place:"自宅",category:"情報セキュリティ",duration:"約4分",impactTitle:"その後——",compassLabel:"情報の扱われ方",compassQuestion:"そのサービスに、何を渡すことになる？",compassDirection:"権利",messageMode:"spoken",
+      scene:"友達が新しいAI学習アプリを見せてくれた。利用には名前・学年・学校名の登録が必要で、学校指定のアプリとは別のものだ。",message:"本名じゃなくてもいいし、無料だし、とりあえず使ってみようよ。",factors:[{label:"必要な情報",value:"名前・学年・学校名"},{label:"学校の指定",value:"別のアプリ"},{label:"利用規約",value:"確認していない"}],prompt:"使う前に、何を確かめる？",
       choices:[
-        {id:"fake",label:"名前や学年は正確に書かず、様子を見てから使う",reasons:["個人が特定されるのを避けたい","試しに使ってみたい","本当に必要な情報か確かめたい"],outcome:"多くの機能は使えたが、学年に合わせた問題は出せなかった。どの情報が本当に必要なのか、結局分からないままだった。",gain:"個人を特定されるリスクをひとまず減らせる",caution:"利用規約に反する使い方になっている場合がある",responsibility:"規約に違反していないか確認する"},
-        {id:"skip",label:"学校の指定ではないが、そのまま名前や学年を入力して使い始める",reasons:["早く試したい","友達も使っているから","無料だから大丈夫だと思う"],outcome:"数週間後、登録した学校名宛てに広告メールが大量に届くようになった。情報がどこまで保存され、誰が見られるのかは分からないままだ。",gain:"すぐに使い始められる",caution:"入力した個人情報がどう使われるか確認していない",responsibility:"渡した情報の行き先を後から調べる"},
-        {id:"ask-teacher",label:"友達には理由を伝え、学校のアプリで同じような使い方ができないか先生に聞く",reasons:["学校が把握しているアプリの方が安心だ","似た機能が別の方法であるかもしれない","先生に聞けば早く分かる"],outcome:"先生に相談すると、学校のアプリにも似た機能があることが分かった。友達にも共有し、二人ともそちらを使うことにした。",gain:"学校が確認済みの範囲で学べる",caution:"新しいアプリの方が便利に見えることもある",responsibility:"学校の範囲内でできることを最初に確かめる"},
-        {id:"check",label:"先生や家の人と一緒に、利用規約と対象年齢を確認してから決める",reasons:["自分だけでは判断が難しい","年齢制限があるかもしれない","学校のルールに合っているか知りたい"],outcome:"確認すると、対象年齢が15歳以上のサービスだった。先生に相談し、学校のアプリで代わりの学習方法を探すことにした。",gain:"年齢や規約に合った使い方を選べる",caution:"確認に時間がかかる",responsibility:"分かったことを友達にも伝える"}
+        {id:"fake",label:"正確な情報は入れず、試しに使う",reasons:["個人が特定されるのを避けたい","試しに使ってみたい","本当に必要な情報か確かめたい"],outcome:"多くの機能は使えたが、学年に合う問題は出なかった。何の情報が本当に必要なのか、結局分からないままだった。",gain:"個人を特定されるリスクをひとまず減らせる",caution:"利用規約に反する使い方になっている場合がある",responsibility:"規約に違反していないか確認する"},
+        {id:"skip",label:"名前や学年を入力し、そのまま使う",reasons:["早く試したい","友達も使っているから","無料だから大丈夫だと思う"],outcome:"学習とは関係のない広告が表示されるようになった。入力した情報がどこまで保存され、誰に使われるのかは分からないままだ。",gain:"すぐに使い始められる",caution:"入力した個人情報がどう使われるか確認していない",responsibility:"渡した情報の行き先を後から調べる"},
+        {id:"ask-teacher",label:"学校のアプリで代用できないか先生に聞く",reasons:["学校が把握しているアプリの方が安心だ","似た機能が別の方法であるかもしれない","先生に聞けば早く分かる"],outcome:"学校のアプリにも似た機能があると分かった。友達にも伝え、二人でそちらを使うことにした。",gain:"学校が確認済みの範囲で学べる",caution:"新しいアプリの方が便利に見えることもある",responsibility:"学校の範囲内でできることを最初に確かめる"},
+        {id:"check",label:"家の人や先生と、規約・対象年齢を確認する",reasons:["自分だけでは判断が難しい","年齢制限があるかもしれない","学校のルールに合っているか知りたい"],outcome:"対象年齢が15歳以上だと分かった。先生に相談し、学校のアプリで代わりの学習方法を探すことにした。",gain:"年齢や規約に合った使い方を選べる",caution:"確認に時間がかかる",responsibility:"分かったことを友達にも伝える"}
       ],ruleStarters:["年齢や規約の確認","先生への相談","学校のアプリでの代替"],ruleEnds:["個人情報を渡す前に確認する","規約に合っているか確かめる","学校が把握している範囲で使う"],discussion:"新しいAIサービスを使う前に、確かめておくべきことは何だろう？"
     },
     {
@@ -1074,6 +1174,7 @@ window.AI_COMPASS_EPISODES = [
   // 3-7：その先を考える（影響を知る〜次の物語へ進む）
   // 全体を「〜する」体で統一し、バラバラな言い切り方にならないようにしている。
   const steps = ["場面を見極める", "行動を選ぶ", "大切にしたいことを選ぶ", "影響を知る", "もう一度考える", "別の見方をする", "自分の方針を決める", "次の物語へ進む"];
+  const compactSteps = ["場面を見極める", "行動を選ぶ", "影響を知る", "もう一度考える", "自分の方針を決める", "次の物語へ進む"];
   let storageAvailable = true;
   let saved = loadSaved();
   const chapters = [
@@ -1301,15 +1402,19 @@ window.AI_COMPASS_EPISODES = [
   function focusMain() { requestAnimationFrame(() => app.focus()); }
   let lastFocusSignature = "";
   const STEP_LABELS_EN = ["SITUATION", "CHOICE", "VALUES", "IMPACT", "RECONSIDER", "PERSPECTIVE", "POLICY", "NEXT"];
+  const COMPACT_STEP_LABELS_EN = ["SITUATION", "CHOICE", "IMPACT", "RECONSIDER", "POLICY", "NEXT"];
+  function usesCompactFlow(ep = state.episode) { return Boolean(ep && !ep.special); }
   // フェーズ名はこのバーだけに出す。各ステップ本文の .eyebrow は同じ語句の二重表示に
   // なるため廃止した。番号も「判断フェーズ 01」と「01 / 08」で二重だったので一つにした。
   function progress(step) {
     const ep = state.episode;
-    const segs = steps.map((_, i) => `<i class="${i < step ? "done" : i === step ? "now" : ""}"></i>`).join("");
+    const activeSteps = usesCompactFlow(ep) ? compactSteps : steps;
+    const labels = usesCompactFlow(ep) ? COMPACT_STEP_LABELS_EN : STEP_LABELS_EN;
+    const segs = activeSteps.map((_, i) => `<i class="${i < step ? "done" : i === step ? "now" : ""}"></i>`).join("");
     return `<header class="story-bar">
       <button type="button" class="story-back" data-action="home" aria-label="物語を終了して一覧へ戻る">${icon("back")}<span>一覧へ</span></button>
-      <div class="story-phase"><strong>${STEP_LABELS_EN[step]}<em>${esc(steps[step])}</em></strong><span class="story-steps" role="img" aria-label="全${steps.length}ステップ中${step + 1}ステップ目">${segs}<b>${step + 1}/${steps.length}</b></span></div>
-      <div class="story-who">${avatar(character(), "story-avatar")}${icon("clock")}<span>${esc(ep.time)}<br>${esc(ep.place)}</span></div>
+      <div class="story-phase"><strong>${labels[step]}<em>${esc(activeSteps[step])}</em></strong><span class="story-steps" role="img" aria-label="全${activeSteps.length}ステップ中${step + 1}ステップ目">${segs}<b>${step + 1}/${activeSteps.length}</b></span></div>
+      <span class="story-bar-spacer" aria-hidden="true"></span>
     </header>`;
   }
   function selectedChoice() { return state.episode.choices.find(c => c.id === state.choice); }
@@ -1341,7 +1446,7 @@ window.AI_COMPASS_EPISODES = [
     const preview = characters.find(c => c.id === saved.character) || characters[0];
     const playEntrance = !charactersScreenEntered;
     charactersScreenEntered = true;
-    app.innerHTML = `<section class="roster-select roster-select-v3 ${playEntrance ? "play-entrance" : ""}"><header class="roster-bar"><button type="button" data-action="title" aria-label="トップへ戻る">${icon("back")}</button><button type="button" class="roster-bar-brand" data-action="title">${icon("compass")}<b>AI</b> COMPASS</button></header><div class="roster-stage-v3"><div class="roster-text-col"><p class="eyebrow">${icon("compass","icon-inline")} HOW AI WORKS</p><h1>AIの正体</h1><div class="ai-flow"><div class="ai-flow-step">${icon("book")}<span class="ai-flow-step-text"><strong>学ぶ</strong><span>インターネットや本など<br>たくさんの情報を学ぶ</span></span></div><span class="ai-flow-arrow" aria-hidden="true">${icon("arrow")}</span><div class="ai-flow-step">${icon("predict")}<span class="ai-flow-step-text"><strong>予測する</strong><span>次に続きそうな言葉や<br>内容を予測する</span></span></div><span class="ai-flow-arrow" aria-hidden="true">${icon("arrow")}</span><div class="ai-flow-step">${icon("answer")}<span class="ai-flow-step-text"><strong>組み立てる</strong><span>予測をつなげて<br>文章を組み立てる</span></span></div></div><p class="ai-flow-note">仕組みを知ることが、正しい判断への第一歩です。</p><p class="case-library-note">${icon("book","icon-inline")}<span>物語の「AI」は学校が認めたサービスを想定しています。<br>実際に使うAIは学校のきまりに従ってください。</span></p></div><div class="roster-photo-col"><div class="roster-photo-frame">${avatar(preview, "roster-hero", `object-position:${preview.focusX ?? 50}% 20%`)}<div class="roster-photo-shade"></div></div></div></div><div class="roster-picker"><p class="roster-picker-note">${icon("compass","icon-inline")} 誰を選んでも、物語の展開は同じです</p><div class="roster-picker-strip" role="list">${characters.map((c, i) => `<button type="button" data-character="${c.id}" class="roster-chip ${saved.character === c.id ? "selected" : ""}" role="listitem" aria-current="${saved.character === c.id ? "true" : "false"}" aria-label="主人公候補${i + 1}${saved.character === c.id ? "（選択中）" : ""}">${avatar(c, "roster-chip-image")}${saved.character === c.id ? `<span class="roster-chip-check">${icon("check")}</span>` : ""}</button>`).join("")}</div>${saved.character ? '<button type="button" class="roster-confirm-link" data-action="confirm-character"><span>この主人公で進む</span>' + icon("arrow") + '</button>' : '<span class="roster-confirm-disabled">主人公を選んでください</span>'}</div></section>`;
+    app.innerHTML = `<section class="roster-select roster-select-v3 ${playEntrance ? "play-entrance" : ""}"><header class="roster-bar"><button type="button" data-action="title" aria-label="トップへ戻る">${icon("back")}</button><button type="button" class="roster-bar-brand" data-action="title">${icon("compass")}<b>AI</b> COMPASS</button></header><div class="roster-stage-v3"><div class="roster-text-col"><p class="eyebrow">${icon("compass","icon-inline")} HOW AI WORKS</p><h1>AIの正体</h1><div class="ai-flow"><div class="ai-flow-step">${icon("book")}<span class="ai-flow-step-text"><strong>学ぶ</strong><span>インターネットや本など<br>たくさんの情報を学ぶ</span></span></div><span class="ai-flow-arrow" aria-hidden="true">${icon("arrow")}</span><div class="ai-flow-step">${icon("predict")}<span class="ai-flow-step-text"><strong>予測する</strong><span>次に続きそうな言葉や<br>内容を予測する</span></span></div><span class="ai-flow-arrow" aria-hidden="true">${icon("arrow")}</span><div class="ai-flow-step">${icon("answer")}<span class="ai-flow-step-text"><strong>組み立てる</strong><span>予測をつなげて<br>文章を組み立てる</span></span></div></div><p class="ai-flow-note">仕組みを知ることが、正しい判断への第一歩です。</p><p class="case-library-note">${icon("book","icon-inline")}<span>物語の「AI」は、学校で利用できるサービスを想定しています。<br>実際に使うときは、教育委員会や学校から示された利用条件を確認してください。</span></p></div><div class="roster-photo-col"><div class="roster-photo-frame">${avatar(preview, "roster-hero", `object-position:${preview.focusX ?? 50}% 20%`)}<div class="roster-photo-shade"></div></div></div></div><div class="roster-picker"><p class="roster-picker-note">${icon("compass","icon-inline")} 誰を選んでも、物語の展開は同じです</p><div class="roster-picker-strip" role="list">${characters.map((c, i) => `<button type="button" data-character="${c.id}" class="roster-chip ${saved.character === c.id ? "selected" : ""}" role="listitem" aria-current="${saved.character === c.id ? "true" : "false"}" aria-label="主人公候補${i + 1}${saved.character === c.id ? "（選択中）" : ""}">${avatar(c, "roster-chip-image")}${saved.character === c.id ? `<span class="roster-chip-check">${icon("check")}</span>` : ""}</button>`).join("")}</div>${saved.character ? '<button type="button" class="roster-confirm-link" data-action="confirm-character"><span>この主人公で進む</span>' + icon("arrow") + '</button>' : '<span class="roster-confirm-disabled">主人公を選んでください</span>'}</div></section>`;
   }
   // チャプターごとに1枚の絵を「世界の入口」として大きく見せ、
   // ケースはその上に重ねる文字の一覧として選ばせる。
@@ -1427,12 +1532,13 @@ window.AI_COMPASS_EPISODES = [
     const completed = episodes.filter(ep => saved.rules[ep.id]);
     const directionsHtml = completed.length ? `<div class="compass-directions"><h2>${icon("compass","icon-inline")} 向き合ってきた5つの視点</h2><div class="directions-grid">${compassDirections.map(d => { const matches = completed.filter(ep => ep.compassDirection === d.key); const done = matches.length > 0; return `<article class="direction-card${done ? " done" : ""}">${icon(done ? "check" : "target")}<h3>${d.key}</h3><p>${d.desc}</p><small${done ? "" : ` class="pending"`}>${done ? matches.map(m => esc(m.title)).join("・") : "まだ向き合っていません"}</small></article>`; }).join("")}</div><p class="directions-disclaimer">※この5つの視点は本教材独自の整理です。公的な基準ではありません。</p></div>` : "";
     const mextHtml = completed.length ? `<div class="mext-map"><h2>${icon("book","icon-inline")} 文部科学省ガイドラインの5つのポイントとの対応</h2><p class="mext-source">出典：${esc(MEXT_GUIDELINE.title)}／${esc(MEXT_GUIDELINE.issuer)}／${esc(MEXT_GUIDELINE.date)}<br>${esc(MEXT_GUIDELINE.url)}</p><table class="mext-table"><thead><tr><th>共通して押さえておくべきポイント（公式の記載）</th><th>この教材で向き合ったケース</th></tr></thead><tbody>${MEXT_POINTS.map(pt => { const hit = completed.filter(ep => CASE_MEXT_POINT[ep.id] === pt.key); return `<tr class="${hit.length ? "done" : "pending"}"><th scope="row"><span>${pt.no}</span>${esc(pt.label)}</th><td>${hit.length ? hit.map(h => esc(h.title)).join("・") : "この教材では扱っていません"}</td></tr>`; }).join("")}</tbody></table><p class="mext-note">左の列はガイドラインの記載（事実）です。どのケースがどのポイントに関わるかの割り当ては、本教材による整理です。</p></div>` : "";
-    app.innerHTML = `<section class="shell summary-page"><div class="summary-emblem" aria-hidden="true">${icon("compass")}</div><div class="summary-heading"><div><p class="eyebrow">わたしの方針</p><h1>わたしの方針ノート</h1><p class="lead compact">考えは経験によって変わっていきます。今の自分が決めた方針を、まとめて残せます。</p></div><div class="summary-actions"><button class="primary-button" type="button" data-action="print-summary" ${completed.length ? "" : "disabled"}>PDFに保存／印刷</button><button class="secondary-button" type="button" data-action="home">物語へ戻る</button></div></div><div class="student-info"><span class="student-field"><small>クラス</small>${saved.className ? `<strong>${esc(saved.className)}</strong>` : "<b></b>"}</span><span class="student-field"><small>番号</small>${saved.studentNumber ? `<strong>${esc(saved.studentNumber)}</strong>` : "<b></b>"}</span><span class="student-field student-field-name"><small>名前</small><b></b></span></div>${directionsHtml}${mextHtml}${completed.length ? `<div class="summary-list">${completed.map(ep => `<article class="summary-card"><div class="summary-number">${ep.number}</div><div><p class="compass-tag">${icon("compass","icon-inline")} ${ep.compassLabel}</p><h2>${ep.title}</h2><blockquote>${esc(saved.rules[ep.id])}</blockquote><p class="summary-question"><strong>話し合いの問い</strong>${ep.discussion}</p></div></article>`).join("")}</div><footer class="print-footer">AI COMPASS — AIに何を任せ、何を自分で考えるか。<br><span>参照：${esc(MEXT_GUIDELINE.title)}（${esc(MEXT_GUIDELINE.issuer)}／${esc(MEXT_GUIDELINE.date)}）</span></footer>` : `<div class="empty-summary">${icon("compass")}<h2>方針はまだありません</h2><p>物語を一つ終えると、ここに自分の言葉が加わります。</p><button class="primary-button" type="button" data-action="home">物語を選ぶ</button></div>`}</section>`;
+    app.innerHTML = `<section class="shell summary-page"><div class="summary-emblem" aria-hidden="true">${icon("compass")}</div><div class="summary-heading"><div><p class="eyebrow">わたしの方針</p><h1>わたしの方針ノート</h1><p class="lead compact">考えは経験によって変わっていきます。今の自分が決めた方針を、まとめて残せます。</p></div><div class="summary-actions"><button class="primary-button" type="button" data-action="print-summary" ${completed.length ? "" : "disabled"}>PDFに保存／印刷</button><button class="secondary-button" type="button" data-action="home">物語へ戻る</button></div></div><div class="student-info"><span class="student-field"><small>クラス</small>${saved.className ? `<strong>${esc(saved.className)}</strong>` : "<b></b>"}</span><span class="student-field"><small>番号</small>${saved.studentNumber ? `<strong>${esc(saved.studentNumber)}</strong>` : "<b></b>"}</span><span class="student-field student-field-name"><small>名前</small><b></b></span></div>${directionsHtml}${mextHtml}${completed.length ? `<div class="summary-list">${completed.map(ep => { const parts = saved.ruleParts[ep.id]; const policy = parts ? `<span class="policy-line"><strong>AIに任せる</strong><span>${esc(parts.a)}</span></span><span class="policy-line"><strong>自分で行う／決める</strong><span>${esc(parts.b)}</span></span>` : esc(saved.rules[ep.id]); return `<article class="summary-card"><div class="summary-number">${ep.number}</div><div><p class="compass-tag">${icon("compass","icon-inline")} ${ep.compassLabel}</p><h2>${ep.title}</h2><blockquote>${policy}</blockquote><p class="summary-question"><strong>話し合いの問い</strong>${ep.discussion}</p></div></article>`; }).join("")}</div><footer class="print-footer">AI COMPASS — AIに何を任せ、何を自分で考えるか。<br><span>参照：${esc(MEXT_GUIDELINE.title)}（${esc(MEXT_GUIDELINE.issuer)}／${esc(MEXT_GUIDELINE.date)}）</span></footer>` : `<div class="empty-summary">${icon("compass")}<h2>方針はまだありません</h2><p>物語を一つ終えると、ここに自分の言葉が加わります。</p><button class="primary-button" type="button" data-action="home">物語を選ぶ</button></div>`}</section>`;
   }
   function renderEpisode() {
     const ep = state.episode;
+    if (usesCompactFlow(ep)) return renderCompactEpisode();
     let content = "";
-    if (state.step === 0) content = `<div class="story-copy"><h1>${ep.title}</h1><p class="story-text">${ep.scene}</p><div class="tactical-factors" aria-label="判断する前に確認したい状況">${ep.factors.map(f => factorBox(f)).join("")}</div>${sceneMessage(ep)}<button class="primary-button" type="button" data-action="next">自分の行動を考える ${icon("arrow","icon-inline")}</button></div>`;
+    if (state.step === 0) content = `<div class="story-copy"><div class="scene-meta">${avatar(character(), "scene-meta-avatar")}<span>${icon("clock")}<b>${esc(ep.time)}</b></span><span>${icon("target")}<b>${esc(ep.place)}</b></span></div><h1>${ep.title}</h1><p class="story-text">${ep.scene}</p><div class="tactical-factors" aria-label="判断する前に確認したい状況">${ep.factors.map(f => factorBox(f)).join("")}</div>${sceneMessage(ep)}<button class="primary-button" type="button" data-action="next">自分の行動を考える ${icon("arrow","icon-inline")}</button></div>`;
     if (state.step === 1) content = questionLayout(ep.prompt, "今の自分に近い行動を選んでください。", ep.choices.map(c => choiceButton(c.id, c.label, state.choice)), "choice");
     if (state.step === 2) content = questionLayout("何を大切にして選んだ？", `「${esc(selectedChoice().label)}」を選んだ理由に近いものは？`, selectedChoice().reasons.map((r, i) => choiceButton(String(i), r, state.reason)), "reason", true);
     if (state.step === 3) { const c = selectedChoice(); content = `<div class="result-layout"><div class="story-copy"><h1>翌日／その直後——</h1><p class="story-text outcome">${c.outcome}</p><div class="reflection-box"><span class="reflection-face">${avatar(character(), "reflection-avatar")}</span><div><strong>この展開を知っても、同じ行動を選びますか？</strong><p>選び直すことは、情報を得て考えを更新することです。</p></div></div><button class="primary-button" type="button" data-action="next">もう一度考える ${icon("arrow","icon-inline")}</button></div></div>`; }
@@ -1441,14 +1547,53 @@ window.AI_COMPASS_EPISODES = [
     // すぐ上の .choice-recap と丸ごと重複するため、行動名の再掲を省く。
     const boundaryDup = ep.boundary && ep.boundary.line === c.label;
     const boundaryHtml = ep.boundary ? boundaryNote(ep.boundary, boundaryDup) : ""; content = `<div class="perspective"><h1>選んだ行動を、別の見方で見直す</h1><p class="choice-recap">「${esc(c.label)}」</p><div class="perspective-grid"><article>${icon("plus")}<h2>自分への影響</h2><p>${c.gain}</p></article><article>${icon("alert")}<h2>見落としていた可能性</h2><p>${c.caution}</p></article><article>${icon("target")}<h2>自分が負う責任</h2><p>${c.responsibility}</p></article></div>${boundaryHtml}<div class="compass-question">${icon("compass")}<span><small>今回の判断で大切にしたいこと</small><strong>${ep.compassQuestion}</strong></span></div><button class="primary-button" type="button" data-action="next">今の自分の方針を考える ${icon("arrow","icon-inline")}</button></div>`; }
-    if (state.step === 6) content = `<div class="rule-maker"><div class="rule-maker-head"><span class="rule-face">${avatar(character(), "rule-avatar")}</span><h1>今の自分の方針を<br>自分の言葉で書こう</h1></div><p>後で変えても大丈夫。短い言葉で、今の考えを入力してください。</p><div class="rule-fields"><label>AIに任せてもよいと思うこと<input id="rule-a" type="text" maxlength="80" autocomplete="off" value="${esc(state.ruleA)}" placeholder="例：表現の候補を出すこと"></label><label>ただし、自分で行う／決めること<input id="rule-b" type="text" maxlength="120" autocomplete="off" value="${esc(state.ruleB)}" placeholder="例：意味を確かめ、使うか決めること"></label></div><p class="input-note">名前や連絡先などの個人情報は書かないでください。</p><div class="rule-preview" aria-live="polite"><small>MY POLICY</small><p id="rule-preview-text">AIに「${esc(state.ruleA || "……")}」は任せる。<br>ただし、「${esc(state.ruleB || "……")}」は自分で行う／決める。</p></div><button class="primary-button" type="button" data-action="save-rule" ${state.ruleA.trim() && state.ruleB.trim() ? "" : "disabled"}>この方針を残す ${icon("arrow","icon-inline")}</button></div>`;
+    if (state.step === 6) content = `<div class="rule-maker"><div class="rule-maker-head"><span class="rule-face">${avatar(character(), "rule-avatar")}</span><h1>今の自分の方針を<br>自分の言葉で書こう</h1></div><p>後で変えても大丈夫。短い言葉で、今の考えを入力してください。</p><div class="rule-fields"><label>AIに任せてもよいと思うこと<input id="rule-a" type="text" maxlength="80" autocomplete="off" value="${esc(state.ruleA)}" placeholder="例：表現の候補を出すこと"></label><label>ただし、自分で行う／決めること<input id="rule-b" type="text" maxlength="120" autocomplete="off" value="${esc(state.ruleB)}" placeholder="例：意味を確かめ、使うか決めること"></label></div><p class="input-note">名前や連絡先などの個人情報は書かないでください。</p><div class="rule-preview" aria-live="polite"><small>MY POLICY</small><p id="rule-preview-text"><span class="policy-line"><strong>AIに任せる</strong><span id="rule-preview-a">${esc(state.ruleA || "……")}</span></span><span class="policy-line"><strong>自分で行う／決める</strong><span id="rule-preview-b">${esc(state.ruleB || "……")}</span></span></p></div><button class="primary-button" type="button" data-action="save-rule" ${state.ruleA.trim() && state.ruleB.trim() ? "" : "disabled"}>この方針を残す ${icon("arrow","icon-inline")}</button></div>`;
     if (state.step === 7) { const rule = saved.rules[ep.id]; content = `<div class="ending${ep.special ? " is-special" : ""}">${ep.special ? "" : `<div class="ending-compass">${icon("compass")}</div>`}<h1>考えは、途中で変わっていい。</h1><p class="ending-lead">今日の経験では「${ep.compassLabel}」の視点を使いました。</p>${(() => { const pt = ep.special ? null : mextPointOf(ep); return pt ? `<p class="mext-tag"><small>文部科学省のガイドラインが「共通して押さえておくべきポイント」として挙げている項目</small><strong>${pt.no}. ${esc(pt.label)}</strong></p>` : ""; })()}<div class="ending-policy"><span class="ending-face">${avatar(character(), "ending-avatar")}</span><blockquote>${esc(rule)}</blockquote></div>${ep.special ? supportPanel() : ""}<div class="discussion"><span>教室で話してみる問い</span><p>${ep.discussion}</p></div><div class="ending-actions"><button class="primary-button" type="button" data-action="home">ほかの物語を見る</button><button class="secondary-button" type="button" data-action="restart">もう一度考える</button></div></div>`; }
     app.innerHTML = `<section class="episode-shell game-screen tactical-episode scene-${ep.id}"><div class="game-shade" aria-hidden="true"></div>${progress(state.step)}<div class="game-stage"><div class="episode-content">${content}${ep.special ? supportLine() : ""}</div></div></section>`;
+  }
+  function renderCompactEpisode() {
+    const ep = state.episode;
+    const original = selectedChoice();
+    const current = ep.choices.find(c => c.id === (state.finalChoice || state.choice)) || original;
+    let content = "";
+    if (state.step === 0) content = `<div class="story-copy compact-situation"><div class="scene-meta">${avatar(character(), "scene-meta-avatar")}<span>${icon("clock")}<b>${esc(ep.time)}</b></span><span>${icon("target")}<b>${esc(ep.place)}</b></span></div><h1>${ep.title}</h1><p class="story-text">${ep.scene}</p>${sceneMessage(ep)}<div class="compact-facts" aria-label="判断の手がかり">${ep.factors.map(f => factorBox(f)).join("")}</div><button class="primary-button" type="button" data-action="next">どうする？ ${icon("arrow","icon-inline")}</button></div>`;
+    if (state.step === 1) content = `<div class="question-layout compact-question"><h1>${ep.prompt}</h1><p class="question-help">今の自分に近いものを選んでください。</p><div class="choice-list compact-choice-list" data-field="choice">${ep.choices.map(c => compactChoiceButton(c, state.choice)).join("")}</div></div>`;
+    if (state.step === 2) content = `<div class="story-copy compact-impact"><p class="impact-kicker">YOUR CHOICE</p><p class="choice-recap">「${esc(original.label)}」</p><h1>${esc(ep.impactTitle || "その選択の先で——")}</h1><p class="story-text outcome">${esc(original.outcome)}</p><div class="tradeoff-grid"><article class="tradeoff-gain">${icon("plus")}<span><small>得たもの</small><strong>${esc(original.gain)}</strong></span></article><article class="tradeoff-watch">${icon("alert")}<span><small>気をつけたいこと</small><strong>${esc(original.caution)}</strong></span></article></div><button class="primary-button" type="button" data-action="next">この結果を知って、どうする？ ${icon("arrow","icon-inline")}</button></div>`;
+    if (state.step === 3 && state.reconsider !== "change") content = `<div class="question-layout compact-question"><h1>同じ行動を選ぶ？</h1><p class="question-help">選び直しても、同じままでも大丈夫。</p><div class="choice-list compact-reconsider-list" data-field="reconsider">${compactBinaryChoice("keep", "同じ行動を選ぶ", "理由や注意点を考え直した", state.reconsider)}${compactBinaryChoice("change", "別の行動に変える", "結果を知って考えが変わった", state.reconsider)}</div></div>`;
+    if (state.step === 3 && state.reconsider === "change") content = `<div class="question-layout compact-question"><h1>今なら、どうする？</h1><p class="question-help">新しく選びたい行動を選んでください。</p><div class="choice-list compact-choice-list" data-field="finalChoice">${ep.choices.filter(c => c.id !== state.choice).map(c => compactChoiceButton(c, state.finalChoice)).join("")}</div><button class="back-button compact-back" type="button" data-action="back">${icon("back")}<span>考え直す</span></button></div>`;
+    if (state.step === 4) {
+      const custom = state.policyMode === "custom";
+      const modeTabs = `<div class="policy-mode-tabs" aria-label="方針の作り方"><button type="button" data-action="set-policy-mode" data-mode="preset" aria-pressed="${custom ? "false" : "true"}">候補から選ぶ<small>タップして組み合わせる</small></button><button type="button" data-action="set-policy-mode" data-mode="custom" aria-pressed="${custom ? "true" : "false"}">自分で書く<small>言葉を自由に入力する</small></button></div>`;
+      const controls = custom
+        ? `<div class="compact-rule-fields"><label>AIに任せてもよいこと<input id="rule-a" type="text" maxlength="80" autocomplete="off" value="${esc(state.ruleA)}" placeholder="自分の言葉で入力"></label><label>自分で行う／決めること<input id="rule-b" type="text" maxlength="120" autocomplete="off" value="${esc(state.ruleB)}" placeholder="自分の言葉で入力"></label></div>`
+        : `<fieldset><legend>AIに任せてもよいこと</legend><div class="policy-chips" data-field="ruleA">${ep.ruleStarters.map(v => policyChip(v, state.ruleA)).join("")}</div></fieldset><fieldset><legend>自分で行う／決めること</legend><div class="policy-chips" data-field="ruleB">${ep.ruleEnds.map(v => policyChip(v, state.ruleB)).join("")}</div></fieldset>`;
+      const guidance = ep.boundary ? `<details class="compact-guidance"><summary>AIを使う前に、何を確認する？</summary><p>${esc(ep.boundary.note)}</p></details>` : "";
+      content = `<div class="compact-policy"><div class="compact-policy-layout"><section class="compact-policy-editor"><h1>今の自分の方針</h1><p class="compact-policy-lead">AIに何を任せ、何を自分で決める？</p>${modeTabs}<div class="compact-rule-builder">${controls}</div></section><section class="compact-policy-result"><div class="rule-preview" aria-live="polite"><small>MY POLICY</small><p id="rule-preview-text"><span class="policy-line"><strong>AIに任せる</strong><span id="rule-preview-a">${esc(state.ruleA || "……")}</span></span><span class="policy-line"><strong>自分で行う／決める</strong><span id="rule-preview-b">${esc(state.ruleB || "……")}</span></span></p></div>${guidance}<button class="primary-button" type="button" data-action="save-rule" ${state.ruleA.trim() && state.ruleB.trim() ? "" : "disabled"}>この方針を残す ${icon("arrow","icon-inline")}</button></section></div></div>`;
+    }
+    if (state.step === 5) {
+      const rule = saved.rules[ep.id];
+      const parts = saved.ruleParts[ep.id];
+      const ruleMarkup = parts ? `<span class="policy-line"><strong>AIに任せる</strong><span>${esc(parts.a)}</span></span><span class="policy-line"><strong>自分で行う／決める</strong><span>${esc(parts.b)}</span></span>` : esc(rule);
+      content = `<div class="ending compact-ending"><div class="compact-ending-head"><div class="ending-compass">${icon("compass")}</div><div><p class="ending-badge">STORY COMPLETE</p><h1>考えは、途中で変わっていい。</h1></div></div><div class="ending-policy"><span class="ending-face">${avatar(character(), "ending-avatar")}</span><blockquote>${ruleMarkup}</blockquote></div><div class="discussion"><span>話してみるなら</span><p>${ep.discussion}</p></div><div class="ending-actions"><button class="primary-button" type="button" data-action="home">ほかの物語を見る</button><button class="secondary-button" type="button" data-action="restart">もう一度考える</button></div></div>`;
+    }
+    app.innerHTML = `<section class="episode-shell game-screen tactical-episode compact-flow scene-${ep.id}"><div class="game-shade" aria-hidden="true"></div>${progress(state.step)}<div class="game-stage"><div class="episode-content">${content}</div></div></section>`;
+  }
+  function compactChoiceButton(choice, selected) {
+    const on = selected === choice.id;
+    return `<button class="choice-card compact-choice-card ${on ? "selected" : ""}" type="button" data-value="${esc(choice.id)}" aria-pressed="${on}"><span class="choice-marker" aria-hidden="true">${on ? icon("check") : ""}</span><span>${esc(choice.label)}</span></button>`;
+  }
+  function compactBinaryChoice(id, title, detail, selected) {
+    const on = selected === id;
+    return `<button class="choice-card compact-choice-card ${on ? "selected" : ""}" type="button" data-value="${id}" aria-pressed="${on}"><span class="choice-marker" aria-hidden="true">${on ? icon("check") : ""}</span><span><strong>${title}</strong><small>${detail}</small></span></button>`;
+  }
+  function policyChip(value, selected) {
+    const on = selected === value;
+    return `<button class="policy-chip ${on ? "selected" : ""}" type="button" data-value="${esc(value)}" aria-pressed="${on}">${on ? icon("check","icon-inline") : ""}${esc(value)}</button>`;
   }
   const BOUNDARY_BASIS = {
     rights: { label: "人の権利で決まっている線", scope: "どの学校でも、どの場面でも変わりません。" },
     safety: { label: "安全のために決まっている線", scope: "どの学校でも、どの場面でも変わりません。" },
-    school: { label: "学校のきまりで決まっている線", scope: "きまりは学校ごとに違います。自分の学校のきまりを確かめましょう。" }
+    school: { label: "使う前に確認すること", scope: "その都度、示された資料や指示を自分で確認しましょう。" }
   };
   function boundaryNote(boundary, hideLine) {
     const b = BOUNDARY_BASIS[boundary.basis] || BOUNDARY_BASIS.school;
@@ -1539,12 +1684,16 @@ window.AI_COMPASS_EPISODES = [
     const episode = episodes.find(e => e.id === id);
     if (!episode) return;
     if (episode.special && !sessionSpecialUnlocked) { announce("特別編は、先生からの合言葉が必要です"); state.view = "home"; render(); return; }
-    const saved_parts = saved.ruleParts[id];
-    state = { view: "episode", episode, step: 0, choice: null, reason: null, reconsider: null, finalChoice: null, ruleA: saved_parts ? saved_parts.a : "", ruleB: saved_parts ? saved_parts.b : "" }; render(); announce("物語を開始しました");
+    // 過去の方針は「方針ノート」に残す。物語を始め直すときは白紙から考えられるよう、
+    // 入力欄や候補の選択状態を引き継がない。
+    state = { view: "episode", episode, step: 0, choice: null, reason: null, reconsider: null, finalChoice: null, ruleA: "", ruleB: "", policyMode: "preset" }; render(); announce("物語を開始しました");
   }
   function next() {
     if (state.step === 4 && state.reconsider === "change" && !state.finalChoice) return;
-    state.step += 1; render(); announce(`${steps[state.step]}の画面です`);
+    state.step += 1;
+    render();
+    const activeSteps = usesCompactFlow() ? compactSteps : steps;
+    announce(`${activeSteps[state.step]}の画面です`);
   }
   function handleInteraction(e) {
     const close = e.target.closest("[data-close]"); if (close) return close.closest("dialog").close();
@@ -1552,7 +1701,18 @@ window.AI_COMPASS_EPISODES = [
     const char = e.target.closest("[data-character]"); if (char) { saved.character = char.dataset.character; persist(); return render(); }
     const ep = e.target.closest("[data-episode]"); if (ep && ep !== document.body && ep.dataset.episode) return startEpisode(ep.dataset.episode);
     const value = e.target.closest("[data-value]");
-    if (value) { const wrapper = value.closest("[data-field]"); const field = value.dataset.field || wrapper.dataset.field; state[field] = value.dataset.value; if (field === "reconsider" && state.reconsider === "change") state.finalChoice = null; return render(); }
+    if (value) {
+      const wrapper = value.closest("[data-field]"); const field = value.dataset.field || wrapper.dataset.field;
+      state[field] = value.dataset.value;
+      if (field === "reconsider" && state.reconsider === "change") state.finalChoice = null;
+      render();
+      if (usesCompactFlow()) {
+        if (field === "choice" && state.step === 1) return window.setTimeout(() => { if (state.view === "episode" && state.step === 1) next(); }, 260);
+        if (field === "reconsider" && state.step === 3 && state.reconsider === "keep") { state.finalChoice = state.choice; return window.setTimeout(() => { if (state.view === "episode" && state.step === 3) next(); }, 260); }
+        if (field === "finalChoice" && state.step === 3) return window.setTimeout(() => { if (state.view === "episode" && state.step === 3) next(); }, 260);
+      }
+      return;
+    }
     const action = e.target.closest("[data-action]")?.dataset.action;
     if (!action) return;
     if (action === "begin") return;
@@ -1563,9 +1723,18 @@ window.AI_COMPASS_EPISODES = [
     if (action === "summary") { state.view = "summary"; render(); }
     if (action === "print-summary") window.print();
     if (action === "next") next();
-    if (action === "back") { if (state.step === 4 && state.reconsider === "change") { state.reconsider = null; state.finalChoice = null; render(); } else { state.step -= 1; render(); } }
+    if (action === "back") { if ((usesCompactFlow() && state.step === 3 && state.reconsider === "change") || (!usesCompactFlow() && state.step === 4 && state.reconsider === "change")) { state.reconsider = null; state.finalChoice = null; render(); } else { state.step -= 1; render(); } }
     if (action === "restart") startEpisode(state.episode.id);
-    if (action === "save-rule") { const a = state.ruleA.trim(); const b = state.ruleB.trim(); if (!a || !b) return; const text = `AIに「${a}」は任せる。ただし、「${b}」は自分で行う／決める。`; saved.rules[state.episode.id] = text; saved.ruleParts[state.episode.id] = { a, b }; if (!saved.completed.includes(state.episode.id)) saved.completed.push(state.episode.id); saved.completedDates[state.episode.id] = new Date().toISOString(); if (Object.keys(saved.rules).length === 1) justUnlockedNotebook = true; persist(); next(); }
+    if (action === "set-policy-mode") {
+      const mode = e.target.closest("[data-mode]")?.dataset.mode;
+      if (!mode || mode === state.policyMode) return;
+      state.policyMode = mode;
+      state.ruleA = "";
+      state.ruleB = "";
+      render();
+      if (state.policyMode === "custom") requestAnimationFrame(() => document.querySelector("#rule-a")?.focus());
+    }
+    if (action === "save-rule") { const a = state.ruleA.trim(); const b = state.ruleB.trim(); if (!a || !b) return; const text = `AIに任せる：${a}。自分で行う／決める：${b}。`; saved.rules[state.episode.id] = text; saved.ruleParts[state.episode.id] = { a, b }; if (!saved.completed.includes(state.episode.id)) saved.completed.push(state.episode.id); saved.completedDates[state.episode.id] = new Date().toISOString(); if (Object.keys(saved.rules).length === 1) justUnlockedNotebook = true; persist(); next(); }
     if (action === "clear-data") { if (confirm("この端末に保存した主人公・体験済みの話・方針をすべて消しますか？")) { try { localStorage.removeItem(STORAGE_KEY); } catch (_) {} saved = { character: null, completed: [], completedDates: {}, rules: {}, ruleParts: {}, className: "", studentNumber: "" }; document.querySelector("#settings-dialog").close(); state.view = "welcome"; render(); announce("この端末の記録を消しました"); } }
     if (action === "export-data") exportData();
     if (action === "import-data") document.querySelector("#import-file-input")?.click();
@@ -1642,10 +1811,10 @@ window.AI_COMPASS_EPISODES = [
     if (e.target.id !== "rule-a" && e.target.id !== "rule-b") return;
     state.ruleA = document.querySelector("#rule-a")?.value || "";
     state.ruleB = document.querySelector("#rule-b")?.value || "";
-    const preview = document.querySelector("#rule-preview-text");
-    if (preview) {
-      preview.textContent = `AIに「${state.ruleA || "……"}」は任せる。ただし、「${state.ruleB || "……"}」は自分で行う／決める。`;
-    }
+    const previewA = document.querySelector("#rule-preview-a");
+    const previewB = document.querySelector("#rule-preview-b");
+    if (previewA) previewA.textContent = state.ruleA || "……";
+    if (previewB) previewB.textContent = state.ruleB || "……";
     const saveButton = document.querySelector('[data-action="save-rule"]');
     if (saveButton) saveButton.disabled = !(state.ruleA.trim() && state.ruleB.trim());
   }
